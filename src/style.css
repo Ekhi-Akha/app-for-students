@@ -2958,7 +2958,6 @@ textarea,
 }
 .div4 {
 	grid-area: 1 / 4 / 7 / 8;
-  /* background: #94D2BD; */
   background: var(--secondary);
   border-radius: 5px;
 }
@@ -2966,5 +2965,4 @@ textarea,
 #hero-title {
   font-size: 7vmin;
   font-weight: 700;
-  /* color: #fff; */
 }
