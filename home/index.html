@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Home</title>
+</head>
+
+<body>
+  <header class="container">
+    <div class="nav">
+      <input type="search" id="search" name="search" placeholder="Find Student">
+      <div class="name-img-container">
+        <b>John Doe</b>
+        <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="profile" class="rounded">
+      </div>
+    </div>
+    </div>
+  </header>
+  <main class="container">
+    <article class="question">
+      <div class="question-header">
+        <!-- add title subject to header(math for example) -->
+        <h2>Subject: <a href="#">Mathematics</a></h2>
+
+        <h3>Question Title</h3>
+        <p>Asked by <b>John Doe</b> on 12/12/2021</p>
+      </div>
+      <div class="question-body">
+        <p>Why is the sky blue?</p>
+      </div>
+
+      <!-- question footer with upvotes/downvotes, previous answers and their upvotes/downvotes to question and input and button -->
+      <div class="question-footer">
+        <div class="votes">
+          <button id="upvote-btn">Upvote</button>
+          <p>0</p>
+          <button class="downvote-btn secondary">Downvote</button>
+          <p>0</p>
+        </div>
+        <div class="answers">
+          <p>Previous Answers</p>
+          <div class="answer">
+            <p>Answer 1</p>
+            <div class="votes">
+              <button class="upvote-btn">Upvote</button>
+              <p>0</p>
+              <button class="downvote-btn secondary">Downvote</button>
+              <p>0</p>
+            </div>
+          </div>
+          <div class="answer">
+            <p>Answer 2</p>
+            <div class="votes">
+              <button class="upvote-btn">Upvote</button>
+              <p>0</p>
+              <button class="downvote-btn secondary">Downvote</button>
+              <p>0</p>
+            </div>
+          </div>
+        </div>
+        <div class="answer-input">
+          <input type="text" placeholder="Answer">
+          <button class="answer-btn">Answer</button>
+        </div>
+
+    </article>
+  </main>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 const increaseCounter = () => {
-	const counter = document.getElementById('counter') as HTMLSpanElement;
+	const counter = document.getElementById('counter');
 	let count = 0;
 
 	const timer = setInterval(() => {
