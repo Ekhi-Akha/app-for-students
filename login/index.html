@@ -1,45 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Login / Sign Up Form UI</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style.css">
 
-
+    <title>Login</title>
 </head>
-
 <body>
-
-  <main class="container">
-    <form>
-
-      <!-- Grid -->
-      <div class="grid">
-
-        <!-- Markup example 1: input is inside label -->
-        <label for="firstname">
-          First name
-          <input type="text" id="firstname" name="firstname" placeholder="First name" required>
-        </label>
-
-        <label for="lastname">
-          Last name
-          <input type="text" id="lastname" name="lastname" placeholder="Last name" required>
-        </label>
-
-      </div>
-
-      <!-- Markup example 2: input is after label -->
-      <label for="email">Email address</label>
-      <input type="email" id="email" name="email" placeholder="Email address" required>
-      <small>We'll never share your email with anyone else.</small>
-
-      <!-- Button -->
-      <button type="submit">Submit</button>
-
-    </form>
-  </main>
+    <main class="container"></main>
+        <div class="box">
+            <h1>Login</h1>
+            <form id="forma">
+                <label>Username</label>
+                <div>
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Enter Username">
+                </div>
+                <label>Password</label>
+                <div>
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Enter Password">
+                </div>
+                <a href="#" class="forgot">Forgot Password?</a>
+                <input type="submit" value="Login">
+            </form>
+            <a href="#" class="sign-up">Sign Up</a>
+        </div>
+    </div>
 </body>
-
 </html>
