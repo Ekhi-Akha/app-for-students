@@ -9,25 +9,31 @@
     <title>Login</title>
 </head>
 <body>
-    <main class="container"></main>
+    <main class="container">
         <div class="box">
             <h1>Login</h1>
-            <form id="forma">
+            <form id="login-form">
                 <label>Username</label>
-                <div>
+                <div class="input-control">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" placeholder="Enter Username">
+                    <input type="text" id="username" placeholder="Enter Username">
+                    <span class="error-message"></span>
                 </div>
                 <label>Password</label>
-                <div>
+                <div class="input-control">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" placeholder="Enter Password">
+                    <input type="password" id="password" placeholder="Enter Password">
+                    <span class="error-message"></span>
                 </div>
                 <a href="#" class="forgot">Forgot Password?</a>
                 <input type="submit" value="Login">
             </form>
             <a href="#" class="sign-up">Sign Up</a>
+       
         </div>
     </div>
+    
+</main>
+<script type="module" src="/login/login.js"></script>
 </body>
 </html>

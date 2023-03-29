@@ -22,6 +22,63 @@
           height: 100vh;
           margin: 0 auto;
         }
+.error-message {
+  display: block;
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+
+.success-message {
+  display: block;
+  color: green;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+
+.input-control {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-control i {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+
+.input-control input {
+  padding-left: 30px;
+}
+
+input[type="submit"] {
+  background-color: #1e90ff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0066ff;
+}
+
+.forgot,
+.sign-up {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sign-up {
+  color: #1e90ff;
+}
+
+
         
      
       
