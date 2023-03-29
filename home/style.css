@@ -3043,7 +3043,6 @@ textarea,
 
 .rounded {
   border-radius: 40%;
-  /* make image fit with input next to it */
   height: 51px;
 }
 
@@ -3073,4 +3072,35 @@ header.container {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.vote {
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+.vote.on {
+  color: #f48024
+}
+
+.upvote {
+  transform: scale(1, -1);
+}
+
+.vote-count {
+  margin-bottom: 0;
+}
+
+.answer-content {
+  margin-bottom: 0px;
+  margin-top: 5%;
+}
+
+.question-content {
+  margin-bottom: 0;
+}
+
+.votes:first-child {
+  margin-bottom: 5%;
 }

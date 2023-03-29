@@ -23,52 +23,87 @@
   <main class="container">
     <article class="question">
       <div class="question-header">
-        <!-- add title subject to header(math for example) -->
         <h2>Subject: <a href="#">Mathematics</a></h2>
-
         <h3>Question Title</h3>
-        <p>Asked by <b>John Doe</b> on 12/12/2021</p>
+        <p class="details"> <small><em>Asked by <b>John Doe</b> on 12/12/2021</em></small> </p>
       </div>
       <div class="question-body">
-        <p>Why is the sky blue?</p>
+        <p class="question-content">Why is the sky blue?</p>
       </div>
-
-      <!-- question footer with upvotes/downvotes, previous answers and their upvotes/downvotes to question and input and button -->
       <div class="question-footer">
         <div class="votes">
-          <button id="upvote-btn">Upvote</button>
-          <p>0</p>
-          <button class="downvote-btn secondary">Downvote</button>
-          <p>0</p>
-        </div>
-        <div class="answers">
-          <p>Previous Answers</p>
-          <div class="answer">
-            <p>Answer 1</p>
-            <div class="votes">
-              <button class="upvote-btn">Upvote</button>
-              <p>0</p>
-              <button class="downvote-btn secondary">Downvote</button>
-              <p>0</p>
-            </div>
-          </div>
-          <div class="answer">
-            <p>Answer 2</p>
-            <div class="votes">
-              <button class="upvote-btn">Upvote</button>
-              <p>0</p>
-              <button class="downvote-btn secondary">Downvote</button>
-              <p>0</p>
-            </div>
-          </div>
-        </div>
-        <div class="answer-input">
-          <input type="text" placeholder="Answer">
-          <button class="answer-btn">Answer</button>
+          <span class="vote upvote">
+            <svg width="36" height="36">
+              <path d="M2 10h32L18 26 2 10z" fill="currentColor">
+              </path>
+            </svg>
+          </span>
+
+          <p class="vote-count">0</p>
+
+          <span class="vote downvote">
+            <svg width="36" height="36">
+              <path d="M2 10h32L18 26 2 10z" fill="currentColor">
+              </path>
+            </svg>
+          </span>
+
+          <p class="vote-count">0</p>
+
         </div>
 
+        <div class="answers">
+          <h4>Answers</h4>
+          <div class="answer">
+            <p class="answer-content">Answer is because of the sun and the atmosphere</p>
+            <div class="votes">
+              <span class="vote upvote">
+                <svg width="36" height="36">
+                  <path d="M2 10h32L18 26 2 10z" fill="currentColor">
+                  </path>
+                </svg>
+              </span>
+              <p class="vote-count">0</p>
+              <span class="vote downvote">
+                <svg width="36" height="36">
+                  <path d="M2 10h32L18 26 2 10z" fill="currentColor">
+                  </path>
+                </svg>
+              </span>
+              <p class="vote-count">0</p>
+            </div>
+          </div>
+          <div class="answer">
+            <p class="answer-content">This answer is better than the previous one because it has more upvotes</p>
+            <div class="votes">
+              <span class="vote upvote">
+                <svg width="36" height="36">
+                  <path d="M2 10h32L18 26 2 10z" fill="currentColor">
+                  </path>
+                </svg>
+              </span>
+              <p class="vote-count">0</p>
+              <span class="vote downvote">
+                <svg width="36" height="36">
+                  <path d="M2 10h32L18 26 2 10z" fill="currentColor">
+                  </path>
+                </svg>
+              </span>
+              <p class="vote-count">0</p>
+            </div>
+          </div>
+        </div>
+        <!-- wrap the input and button in a form -->
+        <form action="/login" class="answer-form">
+          <input class="answer-input" type="text" placeholder="Answer the question">
+          <button type="submit">Answer</button>
+        </form>
+      </div>
     </article>
+
   </main>
+
+  <script type="module" src="index.js"></script>
 </body>
 
 </html>
