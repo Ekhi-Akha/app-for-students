@@ -67,12 +67,14 @@
 		--block-spacing-vertical: calc(var(--spacing) * 2.5);
 	}
 }
+
 .login {
 	display: block;
 	margin: 0 auto;
 	text-align: center;
 	padding: 10px 20px;
-  }
+}
+
 @media (min-width: 768px) {
 
 	body>header,
@@ -3093,4 +3095,24 @@ article:hover {
 
 .testimonial img {
 	border-radius: 50%;
+}
+
+/* make image smaller on multiple breakpoints */
+
+@media (max-width: 1024px) {
+	.testimonial img {
+		max-width: 60%;
+	}
+}
+
+@media (max-width: 768px) {
+	.testimonial img {
+		width: 100px;
+	}
+}
+
+@media (max-width: 480px) {
+	.testimonial img {
+		width: 80px;
+	}
 }

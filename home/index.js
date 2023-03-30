@@ -1,9 +1,13 @@
 const toggleVoteBg = () => {
-	for (const btn of document.querySelectorAll('.vote')) {
-		btn.addEventListener('click', (event) => {
-			event.currentTarget.classList.toggle('on');
-		});
-	}
+	const answers = document.querySelector('.answers');
+	answers.addEventListener('click', (event) => {
+		const classList = event.target.classList;
+		if (classList.contains('vote-svg')) {
+			event.target.parentElement.classList.toggle('on');
+		} else if (classList.contains('vote-path')) {
+			event.target.parentElement.parentElement.classList.toggle('on');
+		}
+	});
 };
 
 const toggleUpvote = () => {
@@ -42,27 +46,9 @@ const addAnswer = () => {
 	const answerList = document.querySelector('.answers');
 
 	answerForm.addEventListener('submit', (event) => {
-		/* <div class="answer">
-            <p class="answer-content">This answer is better than the previous one because it has more upvotes</p>
-            <div class="votes">
-              <span class="vote upvote">
-                <svg width="36" height="36">
-                  <path d="M2 10h32L18 26 2 10z" fill="currentColor">
-                  </path>
-                </svg>
-              </span>
-              <p class="vote-count">0</p>
-              <span class="vote downvote">
-                <svg width="36" height="36">
-                  <path d="M2 10h32L18 26 2 10z" fill="currentColor">
-                  </path>
-                </svg>
-              </span>
-              <p class="vote-count">0</p>
-            </div>
-          </div> */
-		// add answer to the above structure
 		event.preventDefault();
+		if (answerInput.value === '') return;
+
 		const answer = document.createElement('div');
 		answer.classList.add('answer');
 		const answerContent = document.createElement('p');
@@ -111,6 +97,12 @@ const addAnswer = () => {
 		downvotePath.setAttribute('fill', 'currentColor');
 		downvoteSvg.appendChild(downvotePath);
 		downvote.appendChild(downvoteSvg);
+
+		downvotePath.classList.add('vote-path');
+		upvotePath.classList.add('vote-path');
+
+		upvoteSvg.classList.add('vote-svg');
+		downvoteSvg.classList.add('vote-svg');
 
 		const downvoteCount = document.createElement('p');
 		downvoteCount.classList.add('vote-count');

@@ -3084,6 +3084,11 @@ header.container {
   color: #f48024
 }
 
+
+.vote-svg.on {
+  color: #f48024
+}
+
 .upvote {
   transform: scale(1, -1);
 }
