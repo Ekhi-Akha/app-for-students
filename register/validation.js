@@ -1,72 +1,84 @@
-const form = document.getElementById('form');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const password2 = document.getElementById('password2');
+const form = document.querySelector('#form');
+const usernameInput = document.querySelector('#username');
+const emailInput = document.querySelector('#email');
+const passwordInput = document.querySelector('#password');
+const password2Input = document.querySelector('#password2');
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
 
-    validateInputs();
+function showError(input, message) {
+  const errorDiv = input.nextElementSibling;
+  errorDiv.textContent = message;
+  errorDiv.classList.add('error');
+  input.setAttribute('aria-invalid', 'true');
+}
+
+
+function showSuccess(input) {
+  const errorDiv = input.nextElementSibling;
+  errorDiv.textContent = '';
+  errorDiv.classList.remove('error');
+  input.setAttribute('aria-invalid', 'false');
+}
+
+
+function checkUsername() {
+  const username = usernameInput.value.trim();
+  if (username === '') {
+    showError(usernameInput, 'Username is required.');
+  } else if (username.length < 3) {
+    showError(usernameInput, 'Username must be at least 3 characters.');
+  } else {
+    showSuccess(usernameInput);
+  }
+}
+
+
+function checkEmail() {
+  const email = emailInput.value.trim();
+  if (email === '') {
+    showError(emailInput, 'Email is required.');
+  } else if (!/\S+@\S+\.\S+/.test(email)) {
+    showError(emailInput, 'Email is not valid.');
+  } else {
+    showSuccess(emailInput);
+  }
+}
+
+
+function checkPassword() {
+  const password = passwordInput.value.trim();
+  if (password === '') {
+    showError(passwordInput, 'Password is required.');
+  } else if (password.length < 6) {
+    showError(passwordInput, 'Password must be at least 6 characters.');
+  } else {
+    showSuccess(passwordInput);
+  }
+}
+
+
+function checkPasswordMatch() {
+  const password = passwordInput.value.trim();
+  const password2 = password2Input.value.trim();
+  if (password2 === '') {
+    showError(password2Input, 'Please confirm your password.');
+  } else if (password !== password2) {
+    showError(password2Input, 'Passwords do not match.');
+  } else {
+    showSuccess(password2Input);
+  }
+}
+
+
+usernameInput.addEventListener('input', checkUsername);
+emailInput.addEventListener('input', checkEmail);
+passwordInput.addEventListener('input', checkPassword);
+password2Input.addEventListener('input', checkPasswordMatch);
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  checkUsername();
+  checkEmail();
+  checkPassword();
+  checkPasswordMatch();
 });
-
-const setError = (element, message) => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = message;
-    inputControl.classList.add('error');
-    inputControl.classList.remove('success')
-}
-
-const setSuccess = element => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = '';
-    inputControl.classList.add('success');
-    inputControl.classList.remove('error');
-};
-
-const isValidEmail = email => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
-
-const validateInputs = () => {
-    const usernameValue = username.value.trim();
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
-    const password2Value = password2.value.trim();
-
-    if(usernameValue === '') {
-        setError(username, 'Username is required');
-    } else {
-        setSuccess(username);
-    }
-
-    if(emailValue === '') {
-        setError(email, 'Email is required');
-    } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Provide a valid email address');
-    } else {
-        setSuccess(email);
-    }
-
-    if(passwordValue === '') {
-        setError(password, 'Password is required');
-    } else if (passwordValue.length < 8 ) {
-        setError(password, 'Password must be at least 8 character.')
-    } else {
-        setSuccess(password);
-    }
-
-    if(password2Value === '') {
-        setError(password2, 'Please confirm your password');
-    } else if (password2Value !== passwordValue) {
-        setError(password2, "Passwords doesn't match");
-    } else {
-        setSuccess(password2);
-    }
-
-};
