@@ -8,36 +8,124 @@ const toggleVoteBg = () => {
 			event.target.parentElement.parentElement.classList.toggle('on');
 		}
 	});
+
+	const questionFooter = document.querySelector('.question-footer');
+	questionFooter.addEventListener('click', (event) => {
+		console.log('question-footer');
+		const classList = event.target.classList;
+		if (classList.contains('vote-svg')) {
+			event.target.parentElement.classList.toggle('on');
+		} else if (classList.contains('vote-path')) {
+			event.target.parentElement.parentElement.classList.toggle('on');
+		}
+	});
 };
 
 const toggleUpvote = () => {
-	for (const btn of document.querySelectorAll('.upvote')) {
-		btn.addEventListener('click', (event) => {
-			const upvoteCount = event.currentTarget.nextElementSibling;
+	const answers = document.querySelector('.answers');
+	answers.addEventListener('click', (event) => {
+		const classList = event.target.classList;
+		console.log('yay', classList);
+		if (classList.contains('upvote-svg')) {
+			console.log('upvote-svg');
+			const upvoteCount = event.target.parentElement.nextElementSibling;
 			const upvoteCountText = parseInt(upvoteCount.textContent);
 
-			if (btn.classList.contains('on')) {
+			if (event.target.parentElement.classList.contains('on')) {
 				upvoteCount.textContent = upvoteCountText + 1;
 			} else {
 				upvoteCount.textContent = upvoteCountText - 1;
 			}
-		});
-	}
+		} else if (classList.contains('upvote-path')) {
+			console.log('upvote-path');
+			const upvoteCount =
+				event.target.parentElement.parentElement.nextElementSibling;
+			const upvoteCountText = parseInt(upvoteCount.textContent);
+
+			if (event.target.parentElement.parentElement.classList.contains('on')) {
+				upvoteCount.textContent = upvoteCountText + 1;
+			} else {
+				upvoteCount.textContent = upvoteCountText - 1;
+			}
+		}
+	});
+
+	const questionFooter = document.querySelector('.question-footer');
+	questionFooter.addEventListener('click', (event) => {
+		const classList = event.target.classList;
+		if (classList.contains('upvote-svg')) {
+			const upvoteCount = event.target.parentElement.nextElementSibling;
+			const upvoteCountText = parseInt(upvoteCount.textContent);
+
+			if (event.target.parentElement.classList.contains('on')) {
+				upvoteCount.textContent = upvoteCountText + 1;
+			} else {
+				upvoteCount.textContent = upvoteCountText - 1;
+			}
+		} else if (classList.contains('upvote-path')) {
+			const upvoteCount =
+				event.target.parentElement.parentElement.nextElementSibling;
+			const upvoteCountText = parseInt(upvoteCount.textContent);
+
+			if (event.target.parentElement.parentElement.classList.contains('on')) {
+				upvoteCount.textContent = upvoteCountText + 1;
+			} else {
+				upvoteCount.textContent = upvoteCountText - 1;
+			}
+		}
+	});
 };
 
 const toggleDownvote = () => {
-	for (const btn of document.querySelectorAll('.downvote')) {
-		btn.addEventListener('click', (event) => {
-			const downvoteCount = event.currentTarget.nextElementSibling;
+	const answers = document.querySelector('.answers');
+	answers.addEventListener('click', (event) => {
+		const classList = event.target.classList;
+		if (classList.contains('downvote-svg')) {
+			const downvoteCount = event.target.parentElement.nextElementSibling;
 			const downvoteCountText = parseInt(downvoteCount.textContent);
 
-			if (btn.classList.contains('on')) {
+			if (event.target.parentElement.classList.contains('on')) {
 				downvoteCount.textContent = downvoteCountText - 1;
 			} else {
 				downvoteCount.textContent = downvoteCountText + 1;
 			}
-		});
-	}
+		} else if (classList.contains('downvote-path')) {
+			const downvoteCount =
+				event.target.parentElement.parentElement.nextElementSibling;
+			const downvoteCountText = parseInt(downvoteCount.textContent);
+
+			if (event.target.parentElement.parentElement.classList.contains('on')) {
+				downvoteCount.textContent = downvoteCountText - 1;
+			} else {
+				downvoteCount.textContent = downvoteCountText + 1;
+			}
+		}
+	});
+
+	const questionFooter = document.querySelector('.question-footer');
+	questionFooter.addEventListener('click', (event) => {
+		const classList = event.target.classList;
+		if (classList.contains('downvote-svg')) {
+			const downvoteCount = event.target.parentElement.nextElementSibling;
+			const downvoteCountText = parseInt(downvoteCount.textContent);
+
+			if (event.target.parentElement.classList.contains('on')) {
+				downvoteCount.textContent = downvoteCountText - 1;
+			} else {
+				downvoteCount.textContent = downvoteCountText + 1;
+			}
+		} else if (classList.contains('downvote-path')) {
+			const downvoteCount =
+				event.target.parentElement.parentElement.nextElementSibling;
+			const downvoteCountText = parseInt(downvoteCount.textContent);
+
+			if (event.target.parentElement.parentElement.classList.contains('on')) {
+				downvoteCount.textContent = downvoteCountText - 1;
+			} else {
+				downvoteCount.textContent = downvoteCountText + 1;
+			}
+		}
+	});
 };
 
 const addAnswer = () => {
@@ -103,6 +191,12 @@ const addAnswer = () => {
 
 		upvoteSvg.classList.add('vote-svg');
 		downvoteSvg.classList.add('vote-svg');
+
+		upvotePath.classList.add('upvote-path');
+		downvotePath.classList.add('downvote-path');
+
+		upvoteSvg.classList.add('upvote-svg');
+		downvoteSvg.classList.add('downvote-svg');
 
 		const downvoteCount = document.createElement('p');
 		downvoteCount.classList.add('vote-count');
