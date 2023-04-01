@@ -66,7 +66,7 @@ summary[role="link"].secondary:is([aria-current], :hover, :active, :focus) {
 article div:nth-of-type(2) {
   display: none;
   background-color: #374956;
-  background-image: url("../public/young-people-studying-using-laptop.jpg");
+  background-image: url("/young-people-studying-using-laptop.jpg");
   background-position: center;
   background-size: cover;
 }
