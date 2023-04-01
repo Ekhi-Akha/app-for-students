@@ -1,48 +1,89 @@
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Validation</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./regisyle.css">
-    <script defer src="validation.js"></script>
+
+    <meta charset="utf-8">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A login page">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="custom.css">
+
 </head>
 
 <body>
-    <div class="container">
-        <div class="box">
-            <form id="form" action="/">
-                <h1>Registration</h1>
-                <div class="input-control">
-                    <label for="username">Username</label>
-                    <input id="username" name="username" type="text" aria-invalid="true">
-                    <div class="error"></div>
-                </div>
-                <div class="input-control">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="text" aria-invalid="true">
-                    <div class="error"></div>
-                </div>
-                <div class="input-control">
-                    <label for="password">Password</label>
-                    <input id="password" name="password" type="password" aria-invalid="true">
-                    <div class="error"></div>
-                </div>
-                <div class="input-control">
-                    <label for="password2">Password again</label>
-                    <input id="password2" name="password2" type="password" aria-invalid="true">
-                    <div class="error"></div>
-                </div>
-                <button type="submit">Sign Up</button>
-            </form>
-        </div>
 
-    </div>
+    <nav class="container">
+        <ul>
+            <li><a href="/" class="contrast"><strong>Edu.ISI</strong></a></li>
+        </ul>
+        <ul>
+            <li>
+                <details role="list" dir="rtl">
+                    <summary aria-haspopup="listbox" role="link" class="secondary">Theme</summary>
+                    <ul role="listbox">
+                        <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+                        <li><a href="#" data-theme-switcher="light">Light</a></li>
+                        <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+                    </ul>
+                </details>
+            </li>
+
+        </ul>
+    </nav>
+
+    <main class="container">
+        <article class="grid my-grid">
+            <div>
+                <hgroup>
+                    <h1>Register</h1>
+                    <h2>Enter your credentials and join us.</h2>
+                </hgroup>
+                <form id="form">
+
+                    <div class="grid">
+                        <input type="text" id="username" name="username" placeholder="Username" aria-label="username"
+                            autocomplete="username" required>
+                        <input type="text" id="email" name="email" placeholder="Email" aria-label="Email"
+                            autocomplete="email" required>
+                    </div>
+
+                    <input type="password" id="password" name="password" placeholder="Password" aria-label="Password"
+                        autocomplete="new-password" required>
+
+                    <input type="password" id="passwordConfirmation" name="password-confirm"
+                        placeholder="Password confirmation" aria-label="Password" autocomplete="new-password" required>
+
+                    <select id="educational-level">
+                        <option value="nothing" selected>Select your educational level…</option>
+                        <option value="l1">Licence 1</option>
+                        <option value="l2">Licence 2</option>
+                        <option value="l3">Licence 3</option>
+                    </select>
+                    <fieldset>
+                        <label for="remember">
+                            <input type="checkbox" role="switch" id="remember" name="remember">
+                            Remember me
+                        </label>
+                    </fieldset>
+                    <button type="submit" class="contrast" onclick="event.preventDefault()">Register</button>
+                </form>
+                <a href="/login/">Already have an account? Login</a>
+            </div>
+            <div></div>
+        </article>
+    </main>
+
+    <footer class="container-fluid">
+        <small>Built by <a href="https://github.com/Ekhi-Akha/" target="_blank" class="secondary">Ekhi Akha</a> •
+            CopyRight © 2023 Ekhi
+            Akha, Inc. All rights reserved.</small>
+    </footer>
+
+    <script src="../js/minimal-theme-switcher.js"></script>
+    <script src="validation.js"></script>
+
 </body>
 
 </html>

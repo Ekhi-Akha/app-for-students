@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/style.css" />
   <title>Home</title>
 </head>
 
@@ -17,8 +18,18 @@
         </li>
       </ul>
       <ul>
-        <li><a href="/signup">Create new account</a></li>
-        <li><a href="/login" role="button">Login</a></li>
+        <li><a href="/register/">Create new account</a></li>
+        <li><a href="/login/" role="button">Login</a></li>
+        <li>
+          <details role="list" dir="rtl">
+            <summary aria-haspopup="listbox" role="link" class="secondary">Theme</summary>
+            <ul role="listbox">
+              <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+              <li><a href="#" data-theme-switcher="light">Light</a></li>
+              <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+            </ul>
+          </details>
+        </li>
       </ul>
     </nav>
     <main class="container">
@@ -124,6 +135,8 @@
   </div>
 
   <script type="module" src="/src/main.js"></script>
+
+  <script src="js/minimal-theme-switcher.js"></script>
 </body>
 
 </html>

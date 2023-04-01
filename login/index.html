@@ -1,40 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="style1.css">
-    <link rel="stylesheet" href="style.css">
 
+<head>
+
+    <meta charset="utf-8">
     <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A login page">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="custom.css">
+
 </head>
+
 <body>
+
+    <nav class="container">
+        <ul>
+            <li><a href="/" class="contrast"><strong>Edu.ISI</strong></a></li>
+        </ul>
+        <ul>
+            <li>
+                <details role="list" dir="rtl">
+                    <summary aria-haspopup="listbox" role="link" class="secondary">Theme</summary>
+                    <ul role="listbox">
+                        <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+                        <li><a href="#" data-theme-switcher="light">Light</a></li>
+                        <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+                    </ul>
+                </details>
+            </li>
+
+        </ul>
+    </nav>
+
     <main class="container">
-        <div class="box">
-            <h1>Login</h1>
-            <form id="login-form">
-                <label>Username</label>
-                <div class="input-control">
-                    <i class="fa-solid fa-user"></i>
-                    <input type="text" id="username" placeholder="Enter Username" aria-invalid="true">
-                    <span class="error-message"></span>
-                </div>
-                <label>Password</label>
-                <div class="input-control">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="password" placeholder="Enter Password" aria-invalid="true">
-                    <span class="error-message"></span>
-                </div>
-                <a href="#" class="forgot">Forgot Password?</a>
-                <input type="submit" value="Login">
-            </form>
-            <a href="#" class="sign-up">Sign Up</a>
-       
-        </div>
-    </div>
-   
-    
-</main>
-<script type="module" src="/login/login.js"></script>
+        <article class="grid">
+            <div>
+                <hgroup>
+                    <h1>Sign in</h1>
+                    <h2>Enter your credentials and start learning.</h2>
+                </hgroup>
+                <form>
+                    <input type="text" name="email" placeholder="Email" aria-label="Email" autocomplete="nickname"
+                        required>
+                    <input type="password" name="password" placeholder="Password" aria-label="Password"
+                        autocomplete="current-password" required>
+                    <fieldset>
+                        <label for="remember">
+                            <input type="checkbox" role="switch" id="remember" name="remember">
+                            Remember me
+                        </label>
+                    </fieldset>
+                    <button type="submit" class="contrast" onclick="event.preventDefault()">Login</button>
+                </form>
+                <a href="/register/">Don't have an account? Register</a>
+            </div>
+            <div></div>
+        </article>
+    </main>
+
+    <footer class="container-fluid">
+        <small>Built by <a href="https://github.com/Ekhi-Akha/" target="_blank" class="secondary">Ekhi Akha</a> •
+            CopyRight © 2023 Ekhi
+            Akha, Inc. All rights reserved.</small>
+    </footer>
+
+    <script src="../js/minimal-theme-switcher.js"></script>
+
 </body>
+
 </html>

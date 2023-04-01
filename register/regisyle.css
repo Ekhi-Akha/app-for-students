@@ -4,6 +4,7 @@
     border-radius: 35px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
+
 }
 
 .container {
@@ -79,19 +80,6 @@ input[type="password"] {
     border: 1px solid #ccc;
 }
 
-input[type="submit"] {
-    width: 100%;
-    padding: 0px;
-    margin: 10px 0;
-    border-radius: 50px;
-    border: none;
-    background-color: #008CBA;
-
-    font-weight: bold;
-    cursor: pointer;
-    color: #fff;
-    font-size: 16px;
-}
 
 .sign-up {
     display: block;
@@ -103,4 +91,8 @@ input[type="submit"] {
 #login-form {
     display: flex;
     align-items: start;
+}
+
+button {
+    margin: 0;
 }
