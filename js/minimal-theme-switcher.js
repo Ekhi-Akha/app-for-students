@@ -58,6 +58,27 @@ const themeSwitcher = {
 	},
 
 	applyScheme() {
+		// select anchor with 'sun' class if scheme is 'dark' and show it
+		// select anchor with 'moon' class if scheme is 'light' and show it
+		const sun = document.querySelector('a.sun');
+		const moon = document.querySelector('a.moon');
+
+		if (this.scheme == 'dark') {
+			sun.classList.remove('hidden');
+			moon.classList.add('hidden');
+		} else if (this.scheme == 'light') {
+			sun.classList.add('hidden');
+			moon.classList.remove('hidden');
+		} else if (this.scheme == 'auto' && this.preferredColorScheme == 'dark') {
+			console.log('auto dark');
+			sun.classList.remove('hidden');
+			moon.classList.add('hidden');
+		} else if (this.scheme == 'auto' && this.preferredColorScheme == 'light') {
+			console.log('auto light');
+			sun.classList.add('hidden');
+			moon.classList.remove('hidden');
+		}
+
 		document
 			.querySelector('html')
 			.setAttribute(this.rootAttribute, this.scheme);

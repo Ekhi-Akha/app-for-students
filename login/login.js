@@ -2,6 +2,7 @@ const form = document.querySelector('form');
 const emailInput = document.querySelector('input[name="email"]');
 const passwordInput = document.querySelector('input[name="password"]');
 const rememberCheckbox = document.querySelector('#remember');
+const loginButton = document.querySelector('button[type="submit"]');
 
 const inputs = document.querySelectorAll('input');
 inputs.forEach((input) => {
@@ -58,4 +59,5 @@ form.addEventListener('submit', (event) => {
 	event.preventDefault();
 	checkEmail();
 	checkPassword();
+	loginButton.setAttribute('aria-busy', 'true');
 });

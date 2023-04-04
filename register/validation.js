@@ -6,6 +6,7 @@ const passwordConfirmationInput = document.querySelector(
 	'#passwordConfirmation'
 );
 const educationalLevelSelect = document.querySelector('#educational-level');
+const registerButton = document.querySelector('button[type="submit"]');
 
 const inputs = document.querySelectorAll('input');
 inputs.forEach((input) => {
@@ -94,4 +95,5 @@ form.addEventListener('submit', (event) => {
 	checkEmail();
 	checkPassword();
 	checkPasswordMatch();
+	registerButton.setAttribute('aria-busy', 'true');
 });
