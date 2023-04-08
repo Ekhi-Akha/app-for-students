@@ -73,20 +73,18 @@ if ($conn->query($sql) === TRUE) {
 }
 
 // create rewards table
-$sql = "CREATE TABLE IF NOT EXISTS app_for_students.reward (
+$sql = "CREATE TABLE IF NOT EXISTS app_for_students.level (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    student_id INT(6) UNSIGNED NOT NULL,
-    reward VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (student_id) REFERENCES student(id)
+    level VARCHAR(30) NOT NULL,
+    points INT(6) UNSIGNED NOT NULL check points between 0 and 100,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
 
 if ($conn->query($sql) === TRUE) {
-    echo "<h1>Table reward created successfully<br></h1>";
+    echo "<h1>Table level created successfully<br></h1>";
 } else {
     echo "Error creating table: " . $conn->error;
 }
-
 
 $conn->close();
 
