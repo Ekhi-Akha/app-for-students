@@ -18,21 +18,27 @@ $users = [
     'email' => 'john@abc.com',
     'password' => 'password',
     'educational_level' => 'L1',
-    'remember' => 0
+    'remember' => 0,
+    'level' => 'Novice',
+    'points' => 0
   ],
   [
     'username' => 'Jane',
     'email' => 'jane@abc.com',
     'password' => 'password',
     'educational_level' => 'L2',
-    'remember' => 0
+    'remember' => 0,
+    'level' => 'Contributor',
+    'points' => 50
   ],
   [
     'username' => 'Jack',
     'email' => 'abc@bcd.fr',
     'password' => 'password',
     'educational_level' => 'L1',
-    'remember' => 0
+    'remember' => 0,
+    'level' => 'Expert',
+    'points' => 80
   ]
 ];
 
@@ -70,7 +76,8 @@ $answers = [
 ];
 
 foreach ($users as $user) {
-  $sql = "INSERT INTO app_for_students.student (username, email, password, educational_level, remember) VALUES ('{$user['username']}', '{$user['email']}', '{$user['password']}', '{$user['educational_level']}', '{$user['remember']}')";
+  // $sql = "INSERT INTO app_for_students.student (username, email, password, educational_level, remember) VALUES ('{$user['username']}', '{$user['email']}', '{$user['password']}', '{$user['educational_level']}', '{$user['remember']}')";
+  $sql = "INSERT INTO app_for_students.student (username, email, password, educational_level, remember, level, points) VALUES ('{$user['username']}', '{$user['email']}', '{$user['password']}', '{$user['educational_level']}', '{$user['remember']}', '{$user['level']}', '{$user['points']}')";
   if ($conn->query($sql) === TRUE) {
     echo "<h1>New user record created successfully<br></h1>";
   } else {

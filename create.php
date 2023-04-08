@@ -10,6 +10,13 @@ if ($conn->connect_error) {
 }
 echo "<h1>Connected successfully<br></h1>";
 
+$sql = "DROP DATABASE IF EXISTS app_for_students";
+if ($conn->query($sql) === TRUE) {
+    echo "<h1>Database dropped successfully<br></h1>";
+} else {
+    echo "Error dropping database: " . $conn->error;
+}
+
 $sql = "CREATE DATABASE IF NOT EXISTS app_for_students";
 if ($conn->query($sql) === TRUE) {
     echo "<h1>Database created successfully<br></h1>";
@@ -24,6 +31,9 @@ $sql = "CREATE TABLE IF NOT EXISTS app_for_students.student (
     password VARCHAR(255) NOT NULL,
     educational_level VARCHAR(30) NOT NULL,
     remember BOOLEAN NOT NULL,
+    level ENUM('Novice', 'Contributor', 'Expert') NOT NULL DEFAULT 'Novice',
+    points INT(6) UNSIGNED NOT NULL DEFAULT 0,
+    check (points >= 0 and points <= 100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
 
@@ -72,19 +82,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error adding foreign key: " . $conn->error;
 }
 
-// create rewards table
-$sql = "CREATE TABLE IF NOT EXISTS app_for_students.level (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    level VARCHAR(30) NOT NULL,
-    points INT(6) UNSIGNED NOT NULL check points between 0 and 100,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    )";
 
-if ($conn->query($sql) === TRUE) {
-    echo "<h1>Table level created successfully<br></h1>";
-} else {
-    echo "Error creating table: " . $conn->error;
-}
 
 $conn->close();
 
