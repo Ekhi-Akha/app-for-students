@@ -214,7 +214,35 @@ const addAnswer = () => {
 	});
 };
 
+const findStudents = () => {
+	const searchInput = document.getElementById('search');
+	searchInput.addEventListener('keyup', (event) => {
+		// get data from http://localhost/app-for-students/api/get_students.php
+		fetch('http://localhost/app-for-students/api/get_students.php')
+			.then((response) => response.json())
+			.then((students) => {
+				const filteredStudents = students.filter((student) => {
+					return student.username
+						.toLowerCase()
+						.includes(event.target.value.toLowerCase());
+				});
+
+				// put the students in the students list
+				const studentsList = document.querySelector('.students-list');
+				// append the students to the students list
+				studentsList.innerHTML = '';
+				filteredStudents.forEach((student) => {
+					const studentItem = document.createElement('li');
+					studentItem.classList.add('student-item');
+					studentItem.textContent = student.username;
+					studentsList.appendChild(studentItem);
+				});
+			});
+	});
+};
+
 toggleVoteBg();
 toggleUpvote();
 toggleDownvote();
 addAnswer();
+findStudents();

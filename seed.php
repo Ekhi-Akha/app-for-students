@@ -76,7 +76,6 @@ $answers = [
 ];
 
 foreach ($users as $user) {
-  // $sql = "INSERT INTO app_for_students.student (username, email, password, educational_level, remember) VALUES ('{$user['username']}', '{$user['email']}', '{$user['password']}', '{$user['educational_level']}', '{$user['remember']}')";
   $sql = "INSERT INTO app_for_students.student (username, email, password, educational_level, remember, level, points) VALUES ('{$user['username']}', '{$user['email']}', '{$user['password']}', '{$user['educational_level']}', '{$user['remember']}', '{$user['level']}', '{$user['points']}')";
   if ($conn->query($sql) === TRUE) {
     echo "<h1>New user record created successfully<br></h1>";
