@@ -117,15 +117,7 @@
             <p>Get in touch with us and we'll get back to you as soon as possible.</p>
             <a href="#" role="button">Contact Us</a>
           </section>
-          <section>
-            <h2>Follow us</h2>
-            <ul>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">LinkedIn</a></li>
-            </ul>
-          </section>
+
           <section>
             <h2>Legal</h2>
             <ul>

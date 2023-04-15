@@ -221,21 +221,26 @@ const findStudents = () => {
 		fetch('http://localhost/app-for-students/api/get_students.php')
 			.then((response) => response.json())
 			.then((students) => {
-				const filteredStudents = students.filter((student) => {
+				let filteredStudents = students.filter((student) => {
 					return student.username
 						.toLowerCase()
 						.includes(event.target.value.toLowerCase());
 				});
 
-				// put the students in the students list
+				filteredStudents = filteredStudents.slice(0, 5);
+
 				const studentsList = document.querySelector('.students-list');
-				// append the students to the students list
+
 				studentsList.innerHTML = '';
 				filteredStudents.forEach((student) => {
-					const studentItem = document.createElement('li');
-					studentItem.classList.add('student-item');
-					studentItem.textContent = student.username;
-					studentsList.appendChild(studentItem);
+					const studentLink = document.createElement('a');
+					studentLink.setAttribute('href', `student.php?id=${student.id}`);
+					studentLink.textContent = student.username;
+					studentsList.appendChild(studentLink);
+
+					const studentLi = document.createElement('li');
+					studentLi.appendChild(studentLink);
+					studentsList.appendChild(studentLi);
 				});
 			});
 	});
