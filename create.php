@@ -62,6 +62,7 @@ $sql = "CREATE TABLE IF NOT EXISTS app_for_students.question (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     student_id INT(6) UNSIGNED NOT NULL,
     answer_id INT(6) UNSIGNED NULL,
+    title VARCHAR(255) NOT NULL,
     question VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (student_id) REFERENCES student(id),

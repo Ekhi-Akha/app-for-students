@@ -44,16 +44,19 @@ $users = [
 
 $questions = [
   [
+    'title' => 'A question about France',
     'question' => 'What is the capital of France?',
     'student_id' => 1,
   ],
   [
+    'title' => 'A question about Germany',
     'question' => 'What is the capital of Germany?',
-    'student_id' => 1,
+    'student_id' => 2,
   ],
   [
+    'title' => 'A question about Italy',
     'question' => 'What is the capital of Italy?',
-    'student_id' => 1,
+    'student_id' => 3,
   ]
 ];
 
@@ -71,7 +74,7 @@ $answers = [
   [
     'answer' => 'Rome',
     'question_id' => 3,
-    'student_id' => 1,
+    'student_id' => 2,
   ]
 ];
 
@@ -85,7 +88,7 @@ foreach ($users as $user) {
 }
 
 foreach ($questions as $question) {
-  $sql = "INSERT INTO app_for_students.question (question, student_id) VALUES ('{$question['question']}', '{$question['student_id']}')";
+  $sql = "INSERT INTO app_for_students.question (title, question, student_id) VALUES ('{$question['title']}','{$question['question']}', '{$question['student_id']}')";
   if ($conn->query($sql) === TRUE) {
     echo "<h1>New question record created successfully<br></h1>";
   } else {
