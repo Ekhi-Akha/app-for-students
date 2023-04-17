@@ -1,143 +1,155 @@
 const toggleVoteBg = () => {
-	const answers = document.querySelector('.answers');
-	answers.addEventListener('click', (event) => {
-		const classList = event.target.classList;
-		if (classList.contains('vote-svg')) {
-			event.target.parentElement.classList.toggle('on');
-		} else if (classList.contains('vote-path')) {
-			event.target.parentElement.parentElement.classList.toggle('on');
-		}
+	const answers = document.querySelectorAll('.answers');
+	answers.forEach((answer) => {
+		answer.addEventListener('click', (event) => {
+			const classList = event.target.classList;
+			if (classList.contains('vote-svg')) {
+				event.target.parentElement.classList.toggle('on');
+			} else if (classList.contains('vote-path')) {
+				event.target.parentElement.parentElement.classList.toggle('on');
+			}
+		});
 	});
 
-	const questionFooter = document.querySelector('.question-footer');
-	questionFooter.addEventListener('click', (event) => {
-		console.log('question-footer');
-		const classList = event.target.classList;
-		if (classList.contains('vote-svg')) {
-			event.target.parentElement.classList.toggle('on');
-		} else if (classList.contains('vote-path')) {
-			event.target.parentElement.parentElement.classList.toggle('on');
-		}
+	const questionFooters = document.querySelectorAll('.question-footer');
+	questionFooters.forEach((questionFooter) => {
+		questionFooter.addEventListener('click', (event) => {
+			const classList = event.target.classList;
+			if (classList.contains('vote-svg')) {
+				event.target.parentElement.classList.toggle('on');
+			} else if (classList.contains('vote-path')) {
+				event.target.parentElement.parentElement.classList.toggle('on');
+			}
+		});
 	});
 };
 
 const toggleUpvote = () => {
-	const answers = document.querySelector('.answers');
-	answers.addEventListener('click', (event) => {
-		const classList = event.target.classList;
-		if (classList.contains('upvote-svg')) {
-			console.log('upvote-svg');
-			const upvoteCount = event.target.parentElement.nextElementSibling;
-			const upvoteCountText = parseInt(upvoteCount.textContent);
+	const answers = document.querySelectorAll('.answers');
+	answers.forEach((answer) => {
+		answer.addEventListener('click', (event) => {
+			const classList = event.target.classList;
+			if (classList.contains('upvote-svg')) {
+				console.log('upvote-svg');
+				const upvoteCount = event.target.parentElement.nextElementSibling;
+				const upvoteCountText = parseInt(upvoteCount.textContent);
 
-			if (event.target.parentElement.classList.contains('on')) {
-				upvoteCount.textContent = upvoteCountText + 1;
-			} else {
-				upvoteCount.textContent = upvoteCountText - 1;
-			}
-		} else if (classList.contains('upvote-path')) {
-			console.log('upvote-path');
-			const upvoteCount =
-				event.target.parentElement.parentElement.nextElementSibling;
-			const upvoteCountText = parseInt(upvoteCount.textContent);
+				if (event.target.parentElement.classList.contains('on')) {
+					upvoteCount.textContent = upvoteCountText + 1;
+				} else {
+					upvoteCount.textContent = upvoteCountText - 1;
+				}
+			} else if (classList.contains('upvote-path')) {
+				console.log('upvote-path');
+				const upvoteCount =
+					event.target.parentElement.parentElement.nextElementSibling;
+				const upvoteCountText = parseInt(upvoteCount.textContent);
 
-			if (event.target.parentElement.parentElement.classList.contains('on')) {
-				upvoteCount.textContent = upvoteCountText + 1;
-			} else {
-				upvoteCount.textContent = upvoteCountText - 1;
+				if (event.target.parentElement.parentElement.classList.contains('on')) {
+					upvoteCount.textContent = upvoteCountText + 1;
+				} else {
+					upvoteCount.textContent = upvoteCountText - 1;
+				}
 			}
-		}
+		});
 	});
 
-	const questionFooter = document.querySelector('.question-footer');
-	questionFooter.addEventListener('click', (event) => {
-		const classList = event.target.classList;
-		if (classList.contains('upvote-svg')) {
-			const upvoteCount = event.target.parentElement.nextElementSibling;
-			const upvoteCountText = parseInt(upvoteCount.textContent);
+	const questionFooters = document.querySelectorAll('.question-footer');
+	questionFooters.forEach((questionFooter) => {
+		questionFooter.addEventListener('click', (event) => {
+			const classList = event.target.classList;
+			if (classList.contains('upvote-svg')) {
+				const upvoteCount = event.target.parentElement.nextElementSibling;
+				const upvoteCountText = parseInt(upvoteCount.textContent);
 
-			if (event.target.parentElement.classList.contains('on')) {
-				upvoteCount.textContent = upvoteCountText + 1;
-			} else {
-				upvoteCount.textContent = upvoteCountText - 1;
-			}
-		} else if (classList.contains('upvote-path')) {
-			const upvoteCount =
-				event.target.parentElement.parentElement.nextElementSibling;
-			const upvoteCountText = parseInt(upvoteCount.textContent);
+				if (event.target.parentElement.classList.contains('on')) {
+					upvoteCount.textContent = upvoteCountText + 1;
+				} else {
+					upvoteCount.textContent = upvoteCountText - 1;
+				}
+			} else if (classList.contains('upvote-path')) {
+				const upvoteCount =
+					event.target.parentElement.parentElement.nextElementSibling;
+				const upvoteCountText = parseInt(upvoteCount.textContent);
 
-			if (event.target.parentElement.parentElement.classList.contains('on')) {
-				upvoteCount.textContent = upvoteCountText + 1;
-			} else {
-				upvoteCount.textContent = upvoteCountText - 1;
+				if (event.target.parentElement.parentElement.classList.contains('on')) {
+					upvoteCount.textContent = upvoteCountText + 1;
+				} else {
+					upvoteCount.textContent = upvoteCountText - 1;
+				}
 			}
-		}
+		});
 	});
 };
 
 const toggleDownvote = () => {
-	const answers = document.querySelector('.answers');
-	answers.addEventListener('click', (event) => {
-		const classList = event.target.classList;
-		if (classList.contains('downvote-svg')) {
-			const downvoteCount = event.target.parentElement.nextElementSibling;
-			const downvoteCountText = parseInt(downvoteCount.textContent);
+	const answers = document.querySelectorAll('.answers');
+	answers.forEach((answer) => {
+		answer.addEventListener('click', (event) => {
+			const classList = event.target.classList;
+			if (classList.contains('downvote-svg')) {
+				const downvoteCount = event.target.parentElement.nextElementSibling;
+				const downvoteCountText = parseInt(downvoteCount.textContent);
 
-			if (event.target.parentElement.classList.contains('on')) {
-				downvoteCount.textContent = downvoteCountText - 1;
-			} else {
-				downvoteCount.textContent = downvoteCountText + 1;
-			}
-		} else if (classList.contains('downvote-path')) {
-			const downvoteCount =
-				event.target.parentElement.parentElement.nextElementSibling;
-			const downvoteCountText = parseInt(downvoteCount.textContent);
+				if (event.target.parentElement.classList.contains('on')) {
+					downvoteCount.textContent = downvoteCountText - 1;
+				} else {
+					downvoteCount.textContent = downvoteCountText + 1;
+				}
+			} else if (classList.contains('downvote-path')) {
+				const downvoteCount =
+					event.target.parentElement.parentElement.nextElementSibling;
+				const downvoteCountText = parseInt(downvoteCount.textContent);
 
-			if (event.target.parentElement.parentElement.classList.contains('on')) {
-				downvoteCount.textContent = downvoteCountText - 1;
-			} else {
-				downvoteCount.textContent = downvoteCountText + 1;
+				if (event.target.parentElement.parentElement.classList.contains('on')) {
+					downvoteCount.textContent = downvoteCountText - 1;
+				} else {
+					downvoteCount.textContent = downvoteCountText + 1;
+				}
 			}
-		}
+		});
 	});
 
-	const questionFooter = document.querySelector('.question-footer');
-	questionFooter.addEventListener('click', (event) => {
-		const classList = event.target.classList;
-		if (classList.contains('downvote-svg')) {
-			const downvoteCount = event.target.parentElement.nextElementSibling;
-			const downvoteCountText = parseInt(downvoteCount.textContent);
+	const questionFooters = document.querySelectorAll('.question-footer');
+	questionFooters.forEach((questionFooter) => {
+		questionFooter.addEventListener('click', (event) => {
+			const classList = event.target.classList;
+			if (classList.contains('downvote-svg')) {
+				const downvoteCount = event.target.parentElement.nextElementSibling;
+				const downvoteCountText = parseInt(downvoteCount.textContent);
 
-			if (event.target.parentElement.classList.contains('on')) {
-				downvoteCount.textContent = downvoteCountText - 1;
-			} else {
-				downvoteCount.textContent = downvoteCountText + 1;
-			}
-		} else if (classList.contains('downvote-path')) {
-			const downvoteCount =
-				event.target.parentElement.parentElement.nextElementSibling;
-			const downvoteCountText = parseInt(downvoteCount.textContent);
+				if (event.target.parentElement.classList.contains('on')) {
+					downvoteCount.textContent = downvoteCountText - 1;
+				} else {
+					downvoteCount.textContent = downvoteCountText + 1;
+				}
+			} else if (classList.contains('downvote-path')) {
+				const downvoteCount =
+					event.target.parentElement.parentElement.nextElementSibling;
+				const downvoteCountText = parseInt(downvoteCount.textContent);
 
-			if (event.target.parentElement.parentElement.classList.contains('on')) {
-				downvoteCount.textContent = downvoteCountText - 1;
-			} else {
-				downvoteCount.textContent = downvoteCountText + 1;
+				if (event.target.parentElement.parentElement.classList.contains('on')) {
+					downvoteCount.textContent = downvoteCountText - 1;
+				} else {
+					downvoteCount.textContent = downvoteCountText + 1;
+				}
 			}
-		}
+		});
 	});
 };
 
 const addAnswer = () => {
 	const answerForms = document.querySelectorAll('.answer-form');
-	const answerInput = document.querySelector('.answer-input');
-	const answerList = document.querySelector('.answers');
 
 	answerForms.forEach((answerForm) => {
 		answerForm.addEventListener('submit', (event) => {
 			event.preventDefault();
+			const answerInput = event.target.children[0];
 			if (answerInput.value === '') return;
 
+			const answerList = event.target.previousElementSibling;
 			const answer = document.createElement('div');
+
 			answer.classList.add('answer');
 			const answerContent = document.createElement('p');
 			answerContent.classList.add('answer-content');

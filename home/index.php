@@ -49,7 +49,6 @@
     </div>
   </header>
   <main class="container">
-
     <article class="question">
       <div class="question-header">
         <h2>Subject: <a href="#">Mathematics</a></h2>
@@ -130,85 +129,6 @@
     </article>
 
     <?php
-    //   <article class="question">
-    //   <div class="question-header">
-    //     <h2>Subject: <a href="#">Mathematics</a></h2>
-    //     <h3>Question Title</h3>
-    //     <p class="details"> <small><em>Asked by <b>John Doe</b> on 12/12/2021</em></small> </p>
-    //   </div>
-    //   <div class="question-body">
-    //     <p class="question-content">Why is the sky blue?</p>
-    //   </div>
-    //   <div class="question-footer">
-    //     <div class="votes">
-    //       <span class="vote upvote">
-    //         <svg width="36" height="36" class="vote-svg upvote-svg">
-    //           <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path upvote-path">
-    //           </path>
-    //         </svg>
-    //       </span>
-    
-    //       <p class="vote-count">0</p>
-    
-    //       <span class="vote downvote">
-    //         <svg width="36" height="36" class="vote-svg downvote-svg">
-    //           <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path downvote-path">
-    //           </path>
-    //         </svg>
-    //       </span>
-    
-    //       <p class="vote-count">0</p>
-    
-    //     </div>
-    //   </div>
-    
-    //   <div class="answers">
-    //     <h4>Answers</h4>
-    //     <div class="answer">
-    //       <p class="answer-content">Answer is because of the sun and the atmosphere</p>
-    //       <div class="votes">
-    //         <span class="vote upvote">
-    //           <svg width="36" height="36" class="vote-svg upvote-svg">
-    //             <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path upvote-path">
-    //             </path>
-    //           </svg>
-    //         </span>
-    //         <p class="vote-count">0</p>
-    //         <span class="vote downvote">
-    //           <svg width="36" height="36" class="vote-svg downvote-svg">
-    //             <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path downvote-path">
-    //             </path>
-    //           </svg>
-    //         </span>
-    //         <p class="vote-count">0</p>
-    //       </div>
-    //     </div>
-    //     <div class="answer">
-    //       <p class="answer-content">This answer is better than the previous one because it has more upvotes</p>
-    //       <div class="votes">
-    //         <span class="vote upvote">
-    //           <svg width="36" height="36" class="vote-svg upvote-svg">
-    //             <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path upvote-path">
-    //             </path>
-    //           </svg>
-    //         </span>
-    //         <p class="vote-count">0</p>
-    //         <span class="vote downvote">
-    //           <svg width="36" height="36" class="vote-svg downvote-svg">
-    //             <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path downvote-path">
-    //             </path>
-    //           </svg>
-    //         </span>
-    //         <p class="vote-count">0</p>
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <form action="/login" class="answer-form">
-    //     <input class="answer-input" type="text" placeholder="Answer the question">
-    //     <button type="submit">Answer</button>
-    //   </form>
-    // </article>
-    // convert this html above to php
     $servername = "localhost";
     $username = "root";
     $password = "";
