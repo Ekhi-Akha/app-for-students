@@ -2,6 +2,7 @@ const toggleVoteBg = () => {
 	const answers = document.querySelectorAll('.answers');
 	answers.forEach((answer) => {
 		answer.addEventListener('click', (event) => {
+			console.log('answer get clicked', event.target);
 			const classList = event.target.classList;
 			if (classList.contains('vote-svg')) {
 				event.target.parentElement.classList.toggle('on');

@@ -147,11 +147,15 @@
       // get student using student_id from student table
       $student = mysqli_query($conn, "SELECT * FROM app_for_students.student WHERE id = " . $row['student_id']);
       $student = mysqli_fetch_assoc($student);
-
-      echo json_encode($student);
+      // get answer related to the question
+      $sql = "SELECT * FROM app_for_students.answer WHERE question_id = " . $row['id'];
+      $answers = mysqli_query($conn, $sql);
+      // $answer = mysqli_fetch_assoc($answer);
+    
+      // echo "<br>student: " . json_encode($student);
       // print the $row array as json
-      echo json_encode($row);
-      echo $row['id'];
+      // echo "<br>question: " . json_encode($row);
+      // echo $row['id'];
       echo "
  <article  class='question' id='" . $row['id'] . "'>
       <div class='question-header'>
@@ -160,7 +164,7 @@
         <p class='details'> <small><em>Asked by <b>" . $student['username'] . "</b> on " . substr($row['created_at'], 0, 10) . "</em></small> </p>
       </div>
       <div class='question-body'>
-        <p class='question-content'>Why is the sky blue?</p>
+        <p class='question-content'>" . $row['question'] . "</p>
       </div>
       <div class='question-footer'>
         <div class='votes'>
@@ -185,9 +189,11 @@
       </div>
 
       <div class='answers'>
-        <h4>Answers</h4>
+        <h4>Answers</h4>";
+      while ($answer = mysqli_fetch_assoc($answers)) {
+        echo "
         <div class='answer'>
-          <p class='answer-content'>Answer is because of the sun and the atmosphere</p>
+          <p class='answer-content'>" . $answer['answer'] . "</p>
           <div class='votes'>
             <span class='vote upvote'>
               <svg width='36' height='36' class='vote-svg upvote-svg'>
@@ -204,32 +210,16 @@
             </span>
             <p class='vote-count'>0</p>
           </div>
-        </div>
-        <div class='answer'>
-          <p class='answer-content'>This answer is better than the previous one because it has more upvotes</p>
-          <div class='votes'>
-            <span class='vote upvote'>
-              <svg width='36' height='36' class='vote-svg upvote-svg'>
-                <path d='M2 10h32L18 26 2 10z' fill='currentColor' class='vote-path upvote-path'>
-                </path>
-              </svg>
-            </span>
-            <p class='vote-count'>0</p>
-            <span class='vote downvote'>
-              <svg width='36' height='36' class='vote-svg downvote-svg'>
-                <path d='M2 10h32L18 26 2 10z' fill='currentColor' class='vote-path downvote-path'>
-                </path>
-              </svg>
-            </span>
-            <p class='vote-count'>0</p>
-          </div>
-        </div>
-      </div>
-      <form action='/login' class='answer-form'>
-        <input class='answer-input' type='text' placeholder='Answer the question'>
-        <button type='submit'>Answer</button>
-      </form>
-    </article>";
+        </div>";
+      }
+      echo
+        "<form action='/login' class='answer-form'>
+          <input class='answer-input' type='text' placeholder='Answer the question'>
+          <button type='submit'>Answer</button>
+        </form>
+      </article>
+      ";
+
 
     }
 

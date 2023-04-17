@@ -75,6 +75,11 @@ $answers = [
     'answer' => 'Rome',
     'question_id' => 3,
     'student_id' => 2,
+  ],
+  [
+    'answer' => 'Paris I think',
+    'question_id' => 1,
+    'student_id' => 2,
   ]
 ];
 
