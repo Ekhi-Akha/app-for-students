@@ -144,18 +144,10 @@
 
 
     while ($row = mysqli_fetch_assoc($result)) {
-      // get student using student_id from student table
       $student = mysqli_query($conn, "SELECT * FROM app_for_students.student WHERE id = " . $row['student_id']);
       $student = mysqli_fetch_assoc($student);
-      // get answer related to the question
       $sql = "SELECT * FROM app_for_students.answer WHERE question_id = " . $row['id'];
       $answers = mysqli_query($conn, $sql);
-      // $answer = mysqli_fetch_assoc($answer);
-    
-      // echo "<br>student: " . json_encode($student);
-      // print the $row array as json
-      // echo "<br>question: " . json_encode($row);
-      // echo $row['id'];
       echo "
  <article  class='question' id='" . $row['id'] . "'>
       <div class='question-header'>
@@ -192,7 +184,7 @@
         <h4>Answers</h4>";
       while ($answer = mysqli_fetch_assoc($answers)) {
         echo "
-        <div class='answer'>
+        <div class='answer' id='" . $answer['id'] . "'>
           <p class='answer-content'>" . $answer['answer'] . "</p>
           <div class='votes'>
             <span class='vote upvote'>

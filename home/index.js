@@ -2,7 +2,6 @@ const toggleVoteBg = () => {
 	const answers = document.querySelectorAll('.answers');
 	answers.forEach((answer) => {
 		answer.addEventListener('click', (event) => {
-			console.log('answer get clicked', event.target);
 			const classList = event.target.classList;
 			if (classList.contains('vote-svg')) {
 				event.target.parentElement.classList.toggle('on');
@@ -139,11 +138,13 @@ const toggleDownvote = () => {
 	});
 };
 
-const addAnswer = () => {
+const addAnswer = async () => {
 	const answerForms = document.querySelectorAll('.answer-form');
 
-	answerForms.forEach((answerForm) => {
-		answerForm.addEventListener('submit', (event) => {
+	answerForms.forEach(async (answerForm) => {
+		// get article container id
+		const questionId = answerForm.parentElement.parentElement.id;
+		answerForm.addEventListener('submit', async (event) => {
 			event.preventDefault();
 			const answerInput = event.target.children[0];
 			if (answerInput.value === '') return;
@@ -222,7 +223,24 @@ const addAnswer = () => {
 
 			answer.appendChild(votes);
 
-			answerList.appendChild(answer);
+			answerList.insertAdjacentElement('afterend', answer);
+
+			const res = await fetch(
+				'http://localhost/app-for-students/api/add_answer.php',
+				{
+					method: 'POST',
+					body: JSON.stringify({
+						answer: answerInput.value,
+						question_id: questionId,
+					}),
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}
+			);
+			const newAnswer = await res.json();
+			const lastAnswer = answerForm.previousElementSibling;
+			lastAnswer.setAttribute('id', newAnswer.id);
 			answerInput.value = '';
 		});
 	});
