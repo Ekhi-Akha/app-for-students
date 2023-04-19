@@ -49,6 +49,13 @@
     </div>
   </header>
   <main class="container">
+    <form class="question-form">
+      <label for="question">Question</label>
+      <input type="text" id="question" name="question" placeholder="Ask a question..." required>
+      <small>Our community is here to help you.</small>
+      <button type="submit">Ask</button>
+    </form>
+
     <article class="question">
       <div class="question-header">
         <h2>Subject: <a href="#">Mathematics</a></h2>
@@ -127,6 +134,8 @@
         <button type="submit">Answer</button>
       </form>
     </article>
+
+
 
     <?php
     $servername = "localhost";

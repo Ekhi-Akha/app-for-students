@@ -277,8 +277,184 @@ const findStudents = () => {
 	});
 };
 
+const addQuestion = async () => {
+	const questionForm = document.querySelector('.question-form');
+
+	questionForm.addEventListener('submit', async (event) => {
+		event.preventDefault();
+		const questionInput = event.target.children[1];
+		if (questionInput.value === '') return;
+		const res = await fetch(
+			'http://localhost/app-for-students/api/add_question.php',
+			{
+				method: 'POST',
+				body: JSON.stringify({
+					question: questionInput.value,
+				}),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}
+		);
+
+		const newQuestion = await res.json();
+		const question = document.createElement('article');
+		question.classList.add('question');
+
+		const questionHeader = document.createElement('div');
+		questionHeader.classList.add('question-header');
+
+		const subject = document.createElement('h2');
+		// subject.textContent = `Subject: ${newQuestion.subject}`;
+		subject.textContent = 'Subject: ';
+
+		const subjectLink = document.createElement('a');
+		subjectLink.setAttribute('href', `#`);
+
+		// subjectLink.textContent = newQuestion.subject;
+		subjectLink.textContent = 'Mathematics';
+
+		subject.appendChild(subjectLink);
+
+		const questionTitle = document.createElement('h3');
+		questionTitle.textContent = newQuestion.title;
+
+		const questionDetails = document.createElement('p');
+		questionDetails.classList.add('details');
+
+		const questionDetailsSmall = document.createElement('small');
+		const questionDetailsEm = document.createElement('em');
+		const questionDetailsB = document.createElement('b');
+		// questionDetailsB.textContent = newQuestion.username;
+		questionDetailsB.textContent = 'John';
+
+		questionDetailsEm.textContent = ' on ';
+		questionDetailsEm.appendChild(questionDetailsB);
+		questionDetailsEm.textContent += newQuestion.created_at;
+
+		questionDetailsSmall.appendChild(questionDetailsEm);
+		questionDetails.appendChild(questionDetailsSmall);
+
+		questionHeader.appendChild(subject);
+		questionHeader.appendChild(questionTitle);
+		questionHeader.appendChild(questionDetails);
+
+		const questionBody = document.createElement('div');
+		questionBody.classList.add('question-body');
+
+		const questionContent = document.createElement('p');
+		questionContent.classList.add('question-content');
+		questionContent.textContent = newQuestion.question;
+
+		questionBody.appendChild(questionContent);
+
+		const questionFooter = document.createElement('div');
+		questionFooter.classList.add('question-footer');
+
+		const votes = document.createElement('div');
+		votes.classList.add('votes');
+
+		const upvote = document.createElement('span');
+		upvote.classList.add('vote', 'upvote');
+
+		const upvoteSvg = document.createElementNS(
+			'http://www.w3.org/2000/svg',
+			'svg'
+		);
+		upvoteSvg.setAttribute('width', '36');
+		upvoteSvg.setAttribute('height', '36');
+		upvoteSvg.classList.add('vote-svg', 'upvote-svg');
+
+		const upvotePath = document.createElementNS(
+			'http://www.w3.org/2000/svg',
+			'path'
+		);
+		upvotePath.setAttribute('d', 'M2 10h32L18 26 2 10z');
+		upvotePath.setAttribute('fill', 'currentColor');
+		upvotePath.classList.add('vote-path', 'upvote-path');
+
+		upvoteSvg.appendChild(upvotePath);
+		upvote.appendChild(upvoteSvg);
+
+		const upvoteCount = document.createElement('p');
+		upvoteCount.classList.add('vote-count');
+		upvoteCount.textContent = '0';
+
+		const downvote = document.createElement('span');
+		downvote.classList.add('vote', 'downvote');
+
+		const downvoteSvg = document.createElementNS(
+			'http://www.w3.org/2000/svg',
+			'svg'
+		);
+		downvoteSvg.setAttribute('width', '36');
+		downvoteSvg.setAttribute('height', '36');
+		downvoteSvg.classList.add('vote-svg', 'downvote-svg');
+
+		const downvotePath = document.createElementNS(
+			'http://www.w3.org/2000/svg',
+			'path'
+		);
+		downvotePath.setAttribute('d', 'M2 10h32L18 26 2 10z');
+
+		downvotePath.setAttribute('fill', 'currentColor');
+		downvotePath.classList.add('vote-path', 'downvote-path');
+
+		downvoteSvg.appendChild(downvotePath);
+		downvote.appendChild(downvoteSvg);
+
+		const downvoteCount = document.createElement('p');
+		downvoteCount.classList.add('vote-count');
+		downvoteCount.textContent = '0';
+
+		votes.appendChild(upvote);
+		votes.appendChild(upvoteCount);
+		votes.appendChild(downvote);
+		votes.appendChild(downvoteCount);
+
+		questionFooter.appendChild(votes);
+
+		const answers = document.createElement('div');
+		answers.classList.add('answers');
+
+		const answersHeader = document.createElement('h4');
+		answersHeader.textContent = 'Answers';
+
+		const answerForm = document.createElement('form');
+		answerForm.classList.add('answer-form');
+		answerForm.setAttribute('action', '/login');
+
+		const answerInput = document.createElement('input');
+		answerInput.classList.add('answer-input');
+		answerInput.setAttribute('type', 'text');
+		answerInput.setAttribute('placeholder', 'Answer the question');
+
+		const answerButton = document.createElement('button');
+		answerButton.setAttribute('type', 'submit');
+		answerButton.textContent = 'Answer';
+
+		answerForm.appendChild(answerInput);
+		answerForm.appendChild(answerButton);
+
+		answers.appendChild(answersHeader);
+		answers.appendChild(answerForm);
+
+		questionFooter.appendChild(answers);
+
+		question.appendChild(questionHeader);
+		question.appendChild(questionBody);
+		question.appendChild(questionFooter);
+
+		const main = document.querySelector('main');
+		main.insertBefore(question, main.children[1]);
+
+		questionInput.value = '';
+	});
+};
+
 toggleVoteBg();
 toggleUpvote();
 toggleDownvote();
 addAnswer();
 findStudents();
+addQuestion();
