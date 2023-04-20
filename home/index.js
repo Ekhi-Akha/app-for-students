@@ -1,26 +1,24 @@
+/**
+ *
+ * @param {string} type
+ * @param {string} selector
+ * @param {Function} callback
+ */
+const addGlobalEventListener = (type, selector, callback) => {
+	document.addEventListener(type, (e) => {
+		if (e.target.matches(selector)) callback(e);
+	});
+};
+
 const toggleVoteBg = () => {
-	const answers = document.querySelectorAll('.answers');
-	answers.forEach((answer) => {
-		answer.addEventListener('click', (event) => {
-			const classList = event.target.classList;
-			if (classList.contains('vote-svg')) {
-				event.target.parentElement.classList.toggle('on');
-			} else if (classList.contains('vote-path')) {
-				event.target.parentElement.parentElement.classList.toggle('on');
-			}
-		});
+	addGlobalEventListener('click', '.vote-svg', (event) => {
+		console.log(event.target, 1);
+		event.target.parentElement.classList.toggle('on');
 	});
 
-	const questionFooters = document.querySelectorAll('.question-footer');
-	questionFooters.forEach((questionFooter) => {
-		questionFooter.addEventListener('click', (event) => {
-			const classList = event.target.classList;
-			if (classList.contains('vote-svg')) {
-				event.target.parentElement.classList.toggle('on');
-			} else if (classList.contains('vote-path')) {
-				event.target.parentElement.parentElement.classList.toggle('on');
-			}
-		});
+	addGlobalEventListener('click', '.vote-path', (event) => {
+		console.log(event.target, 2);
+		event.target.parentElement.parentElement.classList.toggle('on');
 	});
 };
 
