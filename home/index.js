@@ -67,109 +67,108 @@ const toggleDownvote = () => {
 };
 
 const addAnswer = async () => {
-	const answerForms = document.querySelectorAll('.answer-form');
+	addGlobalEventListener('submit', '.answer-form', async (event) => {
+		event.preventDefault();
 
-	answerForms.forEach(async (answerForm) => {
-		const questionId = answerForm.parentElement.parentElement.id;
-		answerForm.addEventListener('submit', async (event) => {
-			event.preventDefault();
-			const answerInput = event.target.children[0];
-			if (answerInput.value === '') return;
+		const questionId =
+			event.target.parentElement.parentElement.parentElement.id;
 
-			const answerList = event.target.previousElementSibling;
-			const answer = document.createElement('div');
+		const answerInput = event.target.children[0];
+		if (answerInput.value === '') return;
 
-			answer.classList.add('answer');
-			const answerContent = document.createElement('p');
-			answerContent.classList.add('answer-content');
+		const answerList = event.target.previousElementSibling;
+		const answer = document.createElement('div');
 
-			answerContent.textContent = answerInput.value;
-			answer.appendChild(answerContent);
+		answer.classList.add('answer');
+		const answerContent = document.createElement('p');
+		answerContent.classList.add('answer-content');
 
-			const votes = document.createElement('div');
-			votes.classList.add('votes');
+		answerContent.textContent = answerInput.value;
+		answer.appendChild(answerContent);
 
-			const upvote = document.createElement('span');
-			upvote.classList.add('vote', 'upvote');
-			const upvoteSvg = document.createElementNS(
-				'http://www.w3.org/2000/svg',
-				'svg'
-			);
-			upvoteSvg.setAttribute('width', '36');
-			upvoteSvg.setAttribute('height', '36');
-			const upvotePath = document.createElementNS(
-				'http://www.w3.org/2000/svg',
-				'path'
-			);
-			upvotePath.setAttribute('d', 'M2 10h32L18 26 2 10z');
-			upvotePath.setAttribute('fill', 'currentColor');
-			upvoteSvg.appendChild(upvotePath);
-			upvote.appendChild(upvoteSvg);
+		const votes = document.createElement('div');
+		votes.classList.add('votes');
 
-			const upvoteCount = document.createElement('p');
-			upvoteCount.classList.add('vote-count');
-			upvoteCount.textContent = '0';
+		const upvote = document.createElement('span');
+		upvote.classList.add('vote', 'upvote');
+		const upvoteSvg = document.createElementNS(
+			'http://www.w3.org/2000/svg',
+			'svg'
+		);
+		upvoteSvg.setAttribute('width', '36');
+		upvoteSvg.setAttribute('height', '36');
+		const upvotePath = document.createElementNS(
+			'http://www.w3.org/2000/svg',
+			'path'
+		);
+		upvotePath.setAttribute('d', 'M2 10h32L18 26 2 10z');
+		upvotePath.setAttribute('fill', 'currentColor');
+		upvoteSvg.appendChild(upvotePath);
+		upvote.appendChild(upvoteSvg);
 
-			const downvote = document.createElement('span');
-			downvote.classList.add('vote', 'downvote');
-			const downvoteSvg = document.createElementNS(
-				'http://www.w3.org/2000/svg',
-				'svg'
-			);
-			downvoteSvg.setAttribute('width', '36');
-			downvoteSvg.setAttribute('height', '36');
-			const downvotePath = document.createElementNS(
-				'http://www.w3.org/2000/svg',
-				'path'
-			);
-			downvotePath.setAttribute('d', 'M2 10h32L18 26 2 10z');
-			downvotePath.setAttribute('fill', 'currentColor');
-			downvoteSvg.appendChild(downvotePath);
-			downvote.appendChild(downvoteSvg);
+		const upvoteCount = document.createElement('p');
+		upvoteCount.classList.add('vote-count');
+		upvoteCount.textContent = '0';
 
-			downvotePath.classList.add('vote-path');
-			upvotePath.classList.add('vote-path');
+		const downvote = document.createElement('span');
+		downvote.classList.add('vote', 'downvote');
+		const downvoteSvg = document.createElementNS(
+			'http://www.w3.org/2000/svg',
+			'svg'
+		);
+		downvoteSvg.setAttribute('width', '36');
+		downvoteSvg.setAttribute('height', '36');
+		const downvotePath = document.createElementNS(
+			'http://www.w3.org/2000/svg',
+			'path'
+		);
+		downvotePath.setAttribute('d', 'M2 10h32L18 26 2 10z');
+		downvotePath.setAttribute('fill', 'currentColor');
+		downvoteSvg.appendChild(downvotePath);
+		downvote.appendChild(downvoteSvg);
 
-			upvoteSvg.classList.add('vote-svg');
-			downvoteSvg.classList.add('vote-svg');
+		downvotePath.classList.add('vote-path');
+		upvotePath.classList.add('vote-path');
 
-			upvotePath.classList.add('upvote-path');
-			downvotePath.classList.add('downvote-path');
+		upvoteSvg.classList.add('vote-svg');
+		downvoteSvg.classList.add('vote-svg');
 
-			upvoteSvg.classList.add('upvote-svg');
-			downvoteSvg.classList.add('downvote-svg');
+		upvotePath.classList.add('upvote-path');
+		downvotePath.classList.add('downvote-path');
 
-			const downvoteCount = document.createElement('p');
-			downvoteCount.classList.add('vote-count');
-			downvoteCount.textContent = '0';
+		upvoteSvg.classList.add('upvote-svg');
+		downvoteSvg.classList.add('downvote-svg');
 
-			votes.appendChild(upvote);
-			votes.appendChild(upvoteCount);
-			votes.appendChild(downvote);
-			votes.appendChild(downvoteCount);
+		const downvoteCount = document.createElement('p');
+		downvoteCount.classList.add('vote-count');
+		downvoteCount.textContent = '0';
 
-			answer.appendChild(votes);
+		votes.appendChild(upvote);
+		votes.appendChild(upvoteCount);
+		votes.appendChild(downvote);
+		votes.appendChild(downvoteCount);
 
-			answerList.insertAdjacentElement('afterend', answer);
+		answer.appendChild(votes);
 
-			const res = await fetch(
-				'http://localhost/app-for-students/api/add_answer.php',
-				{
-					method: 'POST',
-					body: JSON.stringify({
-						answer: answerInput.value,
-						question_id: questionId,
-					}),
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				}
-			);
-			const newAnswer = await res.json();
-			const lastAnswer = answerForm.previousElementSibling;
-			lastAnswer.setAttribute('id', newAnswer.id);
-			answerInput.value = '';
-		});
+		answerList.insertAdjacentElement('afterend', answer);
+
+		const res = await fetch(
+			'http://localhost/app-for-students/api/add_answer.php',
+			{
+				method: 'POST',
+				body: JSON.stringify({
+					answer: answerInput.value,
+					question_id: questionId,
+				}),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}
+		);
+		const newAnswer = await res.json();
+		const lastAnswer = event.target.previousElementSibling;
+		lastAnswer.setAttribute('id', newAnswer.id);
+		answerInput.value = '';
 	});
 };
 
@@ -227,6 +226,7 @@ const addQuestion = async () => {
 		const newQuestion = await res.json();
 		const question = document.createElement('article');
 		question.classList.add('question');
+		question.setAttribute('id', newQuestion.id);
 
 		const questionHeader = document.createElement('div');
 		questionHeader.classList.add('question-header');
@@ -349,7 +349,7 @@ const addQuestion = async () => {
 
 		const answerForm = document.createElement('form');
 		answerForm.classList.add('answer-form');
-		answerForm.setAttribute('action', '/login');
+		// answerForm.setAttribute('action', '/login');
 
 		const answerInput = document.createElement('input');
 		answerInput.classList.add('answer-input');

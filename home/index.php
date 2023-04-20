@@ -129,7 +129,7 @@
           </div>
         </div>
       </div>
-      <form action="/login" class="answer-form">
+      <form class="answer-form">
         <input class="answer-input" type="text" placeholder="Answer the question">
         <button type="submit">Answer</button>
       </form>
@@ -214,7 +214,7 @@
         </div>";
       }
       echo
-        "<form action='/login' class='answer-form'>
+        "<form class='answer-form'>
           <input class='answer-input' type='text' placeholder='Answer the question'>
           <button type='submit'>Answer</button>
         </form>
