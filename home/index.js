@@ -1,9 +1,3 @@
-/**
- *
- * @param {string} type
- * @param {string} selector
- * @param {Function} callback
- */
 const addGlobalEventListener = (type, selector, callback) => {
 	document.addEventListener(type, (e) => {
 		if (e.target.matches(selector)) callback(e);
@@ -23,116 +17,52 @@ const toggleVoteBg = () => {
 };
 
 const toggleUpvote = () => {
-	const answers = document.querySelectorAll('.answers');
-	answers.forEach((answer) => {
-		answer.addEventListener('click', (event) => {
-			const classList = event.target.classList;
-			if (classList.contains('upvote-svg')) {
-				console.log('upvote-svg');
-				const upvoteCount = event.target.parentElement.nextElementSibling;
-				const upvoteCountText = parseInt(upvoteCount.textContent);
+	addGlobalEventListener('click', '.upvote-svg', (event) => {
+		const upvoteCount = event.target.parentElement.nextElementSibling;
+		const upvoteCountText = parseInt(upvoteCount.textContent);
 
-				if (event.target.parentElement.classList.contains('on')) {
-					upvoteCount.textContent = upvoteCountText + 1;
-				} else {
-					upvoteCount.textContent = upvoteCountText - 1;
-				}
-			} else if (classList.contains('upvote-path')) {
-				console.log('upvote-path');
-				const upvoteCount =
-					event.target.parentElement.parentElement.nextElementSibling;
-				const upvoteCountText = parseInt(upvoteCount.textContent);
-
-				if (event.target.parentElement.parentElement.classList.contains('on')) {
-					upvoteCount.textContent = upvoteCountText + 1;
-				} else {
-					upvoteCount.textContent = upvoteCountText - 1;
-				}
-			}
-		});
+		if (event.target.parentElement.classList.contains('on')) {
+			upvoteCount.textContent = upvoteCountText + 1;
+		} else {
+			upvoteCount.textContent = upvoteCountText - 1;
+		}
 	});
 
-	const questionFooters = document.querySelectorAll('.question-footer');
-	questionFooters.forEach((questionFooter) => {
-		questionFooter.addEventListener('click', (event) => {
-			const classList = event.target.classList;
-			if (classList.contains('upvote-svg')) {
-				const upvoteCount = event.target.parentElement.nextElementSibling;
-				const upvoteCountText = parseInt(upvoteCount.textContent);
+	addGlobalEventListener('click', '.upvote-path', (event) => {
+		const upvoteCount =
+			event.target.parentElement.parentElement.nextElementSibling;
+		const upvoteCountText = parseInt(upvoteCount.textContent);
 
-				if (event.target.parentElement.classList.contains('on')) {
-					upvoteCount.textContent = upvoteCountText + 1;
-				} else {
-					upvoteCount.textContent = upvoteCountText - 1;
-				}
-			} else if (classList.contains('upvote-path')) {
-				const upvoteCount =
-					event.target.parentElement.parentElement.nextElementSibling;
-				const upvoteCountText = parseInt(upvoteCount.textContent);
-
-				if (event.target.parentElement.parentElement.classList.contains('on')) {
-					upvoteCount.textContent = upvoteCountText + 1;
-				} else {
-					upvoteCount.textContent = upvoteCountText - 1;
-				}
-			}
-		});
+		if (event.target.parentElement.parentElement.classList.contains('on')) {
+			upvoteCount.textContent = upvoteCountText + 1;
+		} else {
+			upvoteCount.textContent = upvoteCountText - 1;
+		}
 	});
 };
 
 const toggleDownvote = () => {
-	const answers = document.querySelectorAll('.answers');
-	answers.forEach((answer) => {
-		answer.addEventListener('click', (event) => {
-			const classList = event.target.classList;
-			if (classList.contains('downvote-svg')) {
-				const downvoteCount = event.target.parentElement.nextElementSibling;
-				const downvoteCountText = parseInt(downvoteCount.textContent);
+	addGlobalEventListener('click', '.downvote-svg', (event) => {
+		const downvoteCount = event.target.parentElement.nextElementSibling;
+		const downvoteCountText = parseInt(downvoteCount.textContent);
 
-				if (event.target.parentElement.classList.contains('on')) {
-					downvoteCount.textContent = downvoteCountText - 1;
-				} else {
-					downvoteCount.textContent = downvoteCountText + 1;
-				}
-			} else if (classList.contains('downvote-path')) {
-				const downvoteCount =
-					event.target.parentElement.parentElement.nextElementSibling;
-				const downvoteCountText = parseInt(downvoteCount.textContent);
-
-				if (event.target.parentElement.parentElement.classList.contains('on')) {
-					downvoteCount.textContent = downvoteCountText - 1;
-				} else {
-					downvoteCount.textContent = downvoteCountText + 1;
-				}
-			}
-		});
+		if (event.target.parentElement.classList.contains('on')) {
+			downvoteCount.textContent = downvoteCountText - 1;
+		} else {
+			downvoteCount.textContent = downvoteCountText + 1;
+		}
 	});
 
-	const questionFooters = document.querySelectorAll('.question-footer');
-	questionFooters.forEach((questionFooter) => {
-		questionFooter.addEventListener('click', (event) => {
-			const classList = event.target.classList;
-			if (classList.contains('downvote-svg')) {
-				const downvoteCount = event.target.parentElement.nextElementSibling;
-				const downvoteCountText = parseInt(downvoteCount.textContent);
+	addGlobalEventListener('click', '.downvote-path', (event) => {
+		const downvoteCount =
+			event.target.parentElement.parentElement.nextElementSibling;
+		const downvoteCountText = parseInt(downvoteCount.textContent);
 
-				if (event.target.parentElement.classList.contains('on')) {
-					downvoteCount.textContent = downvoteCountText - 1;
-				} else {
-					downvoteCount.textContent = downvoteCountText + 1;
-				}
-			} else if (classList.contains('downvote-path')) {
-				const downvoteCount =
-					event.target.parentElement.parentElement.nextElementSibling;
-				const downvoteCountText = parseInt(downvoteCount.textContent);
-
-				if (event.target.parentElement.parentElement.classList.contains('on')) {
-					downvoteCount.textContent = downvoteCountText - 1;
-				} else {
-					downvoteCount.textContent = downvoteCountText + 1;
-				}
-			}
-		});
+		if (event.target.parentElement.parentElement.classList.contains('on')) {
+			downvoteCount.textContent = downvoteCountText - 1;
+		} else {
+			downvoteCount.textContent = downvoteCountText + 1;
+		}
 	});
 };
 
@@ -140,7 +70,6 @@ const addAnswer = async () => {
 	const answerForms = document.querySelectorAll('.answer-form');
 
 	answerForms.forEach(async (answerForm) => {
-		// get article container id
 		const questionId = answerForm.parentElement.parentElement.id;
 		answerForm.addEventListener('submit', async (event) => {
 			event.preventDefault();
