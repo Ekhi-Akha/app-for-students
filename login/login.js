@@ -59,5 +59,16 @@ form.addEventListener('submit', (event) => {
 	event.preventDefault();
 	checkEmail();
 	checkPassword();
+
 	loginButton.setAttribute('aria-busy', 'true');
+
+	setTimeout(() => {
+		if (
+			emailInput.getAttribute('aria-invalid') === 'true' ||
+			passwordInput.getAttribute('aria-invalid') === 'true'
+		) {
+			return;
+		}
+		form.submit();
+	}, 1000);
 });

@@ -48,8 +48,8 @@
                     <h1>Sign in</h1>
                     <h2>Enter your credentials and start learning.</h2>
                 </hgroup>
-                <form>
-                    <input type="text" name="email" placeholder="Email" aria-label="Email" autocomplete="nickname"
+                <form action="/app-for-students/api/login.php" method="post">
+                    <input type="email" name="email" placeholder="Email" aria-label="Email" autocomplete="nickname"
                         required>
                     <input type="password" name="password" placeholder="Password" aria-label="Password"
                         autocomplete="current-password" required>
