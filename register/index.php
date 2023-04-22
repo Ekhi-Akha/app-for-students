@@ -24,7 +24,13 @@
                 <a href="#" class="secondary outline sun" role="button" style="border: none;"
                     data-theme-switcher="light">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+<<<<<<< HEAD
                         
+=======
+                        <path fill-rule="evenodd"
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            clip-rule="evenodd"></path>
+>>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
                     </svg>
                 </a>
             </li>
@@ -46,6 +52,7 @@
                     <h1>Register</h1>
                     <h2>Enter your credentials and join us.</h2>
                 </hgroup>
+<<<<<<< HEAD
     <?php
 if (isset($_POST["submit"])) {
     $username = $_POST["username"];
@@ -98,6 +105,9 @@ if (isset($_POST["submit"])) {
 
 
     <form action="index.php" method="post">
+=======
+                <form id="form">
+>>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
 
                     <div class="grid">
                         <input type="text" id="username" name="username" placeholder="Username" aria-label="username"
@@ -112,6 +122,7 @@ if (isset($_POST["submit"])) {
                     <input type="password" id="passwordConfirmation" name="password-confirm"
                         placeholder="Password confirmation" aria-label="Password" autocomplete="new-password" required>
 
+<<<<<<< HEAD
                         <select id="educational-level" name="educational-level">
                               <option value="nothing" selected>Select your educational level…</option>
                              <option value="l1">Licence 1</option>
@@ -119,13 +130,25 @@ if (isset($_POST["submit"])) {
                             <option value="l3">Licence 3</option>
 </select>
 
+=======
+                    <select id="educational-level">
+                        <option value="nothing" selected>Select your educational level…</option>
+                        <option value="l1">Licence 1</option>
+                        <option value="l2">Licence 2</option>
+                        <option value="l3">Licence 3</option>
+                    </select>
+>>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
                     <fieldset>
                         <label for="remember">
                             <input type="checkbox" role="switch" id="remember" name="remember">
                             Remember me
                         </label>
                     </fieldset>
+<<<<<<< HEAD
                     <input type="submit" class="contrast" name="submit" value="Register">
+=======
+                    <button type="submit" class="contrast">Register</button>
+>>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
                 </form>
                 <a href="/app-for-students/login">Already have an account? Login</a>
             </div>
