@@ -9,6 +9,14 @@
   <title>Home</title>
 </head>
 
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+  header("Location: /app-for-students/home");
+  exit();
+}
+?>
+
 <body>
   <div id="app">
     <nav class="container">
@@ -117,19 +125,7 @@
             <p>Get in touch with us and we'll get back to you as soon as possible.</p>
             <a href="#" role="button">Contact Us</a>
           </section>
-<<<<<<< HEAD
-          <section>
-            <h2>Follow us</h2>
-            <ul>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">LinkedIn</a></li>
-            </ul>
-          </section>
-=======
 
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
           <section>
             <h2>Legal</h2>
             <ul>

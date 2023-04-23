@@ -44,6 +44,8 @@
       <div class="name-img-container">
         <b>John Doe</b>
         <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="profile" class="rounded">
+        <!-- logout button -->
+        <a href="/app-for-students/api/logout.php" role="button" class="contrast">Logout</a>
       </div>
     </div>
     </div>
