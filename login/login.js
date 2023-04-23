@@ -59,9 +59,6 @@ form.addEventListener('submit', (event) => {
 	event.preventDefault();
 	checkEmail();
 	checkPassword();
-<<<<<<< HEAD
-	loginButton.setAttribute('aria-busy', 'true');
-=======
 
 	loginButton.setAttribute('aria-busy', 'true');
 
@@ -74,5 +71,26 @@ form.addEventListener('submit', (event) => {
 		}
 		form.submit();
 	}, 1000);
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
 });
+
+// // script to fill form with dummy data
+// const dummyData = {
+// 	email: Math.random().toString(36).substring(2) + '@example.com',
+// 	username: Math.random().toString(36).substring(2),
+// 	password: '12345678',
+// 	passwordConfirmation: '12345678',
+// };
+
+// const username = document.getElementById('username');
+// const email = document.getElementById('email');
+// const password = document.getElementById('password');
+// const passwordConfirmation = document.getElementById('passwordConfirmation');
+
+// const fillForm = () => {
+// 	username.value = dummyData.username;
+// 	email.value = dummyData.email;
+// 	password.value = dummyData.password;
+// 	passwordConfirmation.value = dummyData.passwordConfirmation;
+// };
+
+// fillForm()

@@ -44,22 +44,11 @@ $users = [
 
 $questions = [
   [
-<<<<<<< HEAD
-=======
     'title' => 'A question about France',
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
     'question' => 'What is the capital of France?',
     'student_id' => 1,
   ],
   [
-<<<<<<< HEAD
-    'question' => 'What is the capital of Germany?',
-    'student_id' => 1,
-  ],
-  [
-    'question' => 'What is the capital of Italy?',
-    'student_id' => 1,
-=======
     'title' => 'A question about Germany',
     'question' => 'What is the capital of Germany?',
     'student_id' => 2,
@@ -68,7 +57,6 @@ $questions = [
     'title' => 'A question about Italy',
     'question' => 'What is the capital of Italy?',
     'student_id' => 3,
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
   ]
 ];
 
@@ -86,24 +74,16 @@ $answers = [
   [
     'answer' => 'Rome',
     'question_id' => 3,
-<<<<<<< HEAD
-    'student_id' => 1,
-=======
     'student_id' => 2,
   ],
   [
     'answer' => 'Paris I think',
     'question_id' => 1,
     'student_id' => 2,
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
   ]
 ];
 
 foreach ($users as $user) {
-<<<<<<< HEAD
-  // $sql = "INSERT INTO app_for_students.student (username, email, password, educational_level, remember) VALUES ('{$user['username']}', '{$user['email']}', '{$user['password']}', '{$user['educational_level']}', '{$user['remember']}')";
-=======
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
   $sql = "INSERT INTO app_for_students.student (username, email, password, educational_level, remember, level, points) VALUES ('{$user['username']}', '{$user['email']}', '{$user['password']}', '{$user['educational_level']}', '{$user['remember']}', '{$user['level']}', '{$user['points']}')";
   if ($conn->query($sql) === TRUE) {
     echo "<h1>New user record created successfully<br></h1>";
@@ -113,11 +93,7 @@ foreach ($users as $user) {
 }
 
 foreach ($questions as $question) {
-<<<<<<< HEAD
-  $sql = "INSERT INTO app_for_students.question (question, student_id) VALUES ('{$question['question']}', '{$question['student_id']}')";
-=======
   $sql = "INSERT INTO app_for_students.question (title, question, student_id) VALUES ('{$question['title']}','{$question['question']}', '{$question['student_id']}')";
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
   if ($conn->query($sql) === TRUE) {
     echo "<h1>New question record created successfully<br></h1>";
   } else {

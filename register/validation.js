@@ -6,7 +6,7 @@ const passwordConfirmationInput = document.querySelector(
 	'#passwordConfirmation'
 );
 const educationalLevelSelect = document.querySelector('#educational-level');
-const registerButton = document.querySelector('button[type="submit"]');
+const registerButton = document.querySelector('input[type="submit"]');
 
 const inputs = document.querySelectorAll('input');
 inputs.forEach((input) => {
@@ -24,7 +24,6 @@ educationalLevelSelect.addEventListener('blur', () => {
 });
 
 function showError(input) {
-	console.log(input);
 	input.setAttribute('aria-invalid', 'true');
 }
 
@@ -58,8 +57,8 @@ function checkPassword() {
 	const password = passwordInput.value.trim();
 	if (password === '') {
 		showError(passwordInput, 'Password is required.');
-	} else if (password.length < 6) {
-		showError(passwordInput, 'Password must be at least 6 characters.');
+	} else if (password.length < 8) {
+		showError(passwordInput, 'Password must be at least 8 characters.');
 	} else {
 		showSuccess(passwordInput);
 	}
@@ -89,11 +88,37 @@ passwordInput.addEventListener('input', checkPassword);
 passwordConfirmationInput.addEventListener('input', checkPasswordMatch);
 educationalLevelSelect.addEventListener('input', checkEducationalLevel);
 
-form.addEventListener('submit', (event) => {
-	event.preventDefault();
-	checkUsername();
-	checkEmail();
-	checkPassword();
-	checkPasswordMatch();
-	registerButton.setAttribute('aria-busy', 'true');
-});
+function submitForm(form) {
+	const submitFormFunction = Object.getPrototypeOf(form).submit;
+	submitFormFunction.call(form);
+}
+
+// form.addEventListener('submit', (event) => {
+// 	event.preventDefault();
+// 	checkUsername();
+// 	checkEmail();
+// 	checkPassword();
+// 	checkPasswordMatch();
+
+// 	if (
+// 		usernameInput.getAttribute('aria-invalid') === 'false' &&
+// 		emailInput.getAttribute('aria-invalid') === 'false' &&
+// 		passwordInput.getAttribute('aria-invalid') === 'false' &&
+// 		passwordConfirmationInput.getAttribute('aria-invalid') === 'false'
+// 	) {
+// 		submitForm(form);
+// 	}
+
+// 	// 	// registerButton.setAttribute('aria-busy', 'true');
+// 	// 	setTimeout(() => {
+// 	// 		if (
+// 	// 			usernameInput.getAttribute('aria-invalid') === 'false' &&
+// 	// 			emailInput.getAttribute('aria-invalid') === 'false' &&
+// 	// 			passwordInput.getAttribute('aria-invalid') === 'false' &&
+// 	// 			passwordConfirmationInput.getAttribute('aria-invalid') === 'false' &&
+// 	// 			educationalLevelSelect.getAttribute('aria-invalid') === 'false'
+// 	// 		) {
+// 	// 			submitForm(form);
+// 	// 		}
+// 	// 	}, 1000);
+// });

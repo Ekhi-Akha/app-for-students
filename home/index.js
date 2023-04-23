@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-const toggleVoteBg = () => {
-	const answers = document.querySelector('.answers');
-	answers.addEventListener('click', (event) => {
-		const classList = event.target.classList;
-		if (classList.contains('vote-svg')) {
-			event.target.parentElement.classList.toggle('on');
-		} else if (classList.contains('vote-path')) {
-			event.target.parentElement.parentElement.classList.toggle('on');
-		}
-	});
-
-	const questionFooter = document.querySelector('.question-footer');
-	questionFooter.addEventListener('click', (event) => {
-		console.log('question-footer');
-		const classList = event.target.classList;
-		if (classList.contains('vote-svg')) {
-			event.target.parentElement.classList.toggle('on');
-		} else if (classList.contains('vote-path')) {
-			event.target.parentElement.parentElement.classList.toggle('on');
-		}
-=======
 const addGlobalEventListener = (type, selector, callback) => {
 	document.addEventListener(type, (e) => {
 		if (e.target.matches(selector)) callback(e);
@@ -35,63 +13,10 @@ const toggleVoteBg = () => {
 	addGlobalEventListener('click', '.vote-path', (event) => {
 		console.log(event.target, 2);
 		event.target.parentElement.parentElement.classList.toggle('on');
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
 	});
 };
 
 const toggleUpvote = () => {
-<<<<<<< HEAD
-	const answers = document.querySelector('.answers');
-	answers.addEventListener('click', (event) => {
-		const classList = event.target.classList;
-		console.log('yay', classList);
-		if (classList.contains('upvote-svg')) {
-			console.log('upvote-svg');
-			const upvoteCount = event.target.parentElement.nextElementSibling;
-			const upvoteCountText = parseInt(upvoteCount.textContent);
-
-			if (event.target.parentElement.classList.contains('on')) {
-				upvoteCount.textContent = upvoteCountText + 1;
-			} else {
-				upvoteCount.textContent = upvoteCountText - 1;
-			}
-		} else if (classList.contains('upvote-path')) {
-			console.log('upvote-path');
-			const upvoteCount =
-				event.target.parentElement.parentElement.nextElementSibling;
-			const upvoteCountText = parseInt(upvoteCount.textContent);
-
-			if (event.target.parentElement.parentElement.classList.contains('on')) {
-				upvoteCount.textContent = upvoteCountText + 1;
-			} else {
-				upvoteCount.textContent = upvoteCountText - 1;
-			}
-		}
-	});
-
-	const questionFooter = document.querySelector('.question-footer');
-	questionFooter.addEventListener('click', (event) => {
-		const classList = event.target.classList;
-		if (classList.contains('upvote-svg')) {
-			const upvoteCount = event.target.parentElement.nextElementSibling;
-			const upvoteCountText = parseInt(upvoteCount.textContent);
-
-			if (event.target.parentElement.classList.contains('on')) {
-				upvoteCount.textContent = upvoteCountText + 1;
-			} else {
-				upvoteCount.textContent = upvoteCountText - 1;
-			}
-		} else if (classList.contains('upvote-path')) {
-			const upvoteCount =
-				event.target.parentElement.parentElement.nextElementSibling;
-			const upvoteCountText = parseInt(upvoteCount.textContent);
-
-			if (event.target.parentElement.parentElement.classList.contains('on')) {
-				upvoteCount.textContent = upvoteCountText + 1;
-			} else {
-				upvoteCount.textContent = upvoteCountText - 1;
-			}
-=======
 	addGlobalEventListener('click', '.upvote-svg', (event) => {
 		const upvoteCount = event.target.parentElement.nextElementSibling;
 		const upvoteCountText = parseInt(upvoteCount.textContent);
@@ -112,61 +37,11 @@ const toggleUpvote = () => {
 			upvoteCount.textContent = upvoteCountText + 1;
 		} else {
 			upvoteCount.textContent = upvoteCountText - 1;
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
 		}
 	});
 };
 
 const toggleDownvote = () => {
-<<<<<<< HEAD
-	const answers = document.querySelector('.answers');
-	answers.addEventListener('click', (event) => {
-		const classList = event.target.classList;
-		if (classList.contains('downvote-svg')) {
-			const downvoteCount = event.target.parentElement.nextElementSibling;
-			const downvoteCountText = parseInt(downvoteCount.textContent);
-
-			if (event.target.parentElement.classList.contains('on')) {
-				downvoteCount.textContent = downvoteCountText - 1;
-			} else {
-				downvoteCount.textContent = downvoteCountText + 1;
-			}
-		} else if (classList.contains('downvote-path')) {
-			const downvoteCount =
-				event.target.parentElement.parentElement.nextElementSibling;
-			const downvoteCountText = parseInt(downvoteCount.textContent);
-
-			if (event.target.parentElement.parentElement.classList.contains('on')) {
-				downvoteCount.textContent = downvoteCountText - 1;
-			} else {
-				downvoteCount.textContent = downvoteCountText + 1;
-			}
-		}
-	});
-
-	const questionFooter = document.querySelector('.question-footer');
-	questionFooter.addEventListener('click', (event) => {
-		const classList = event.target.classList;
-		if (classList.contains('downvote-svg')) {
-			const downvoteCount = event.target.parentElement.nextElementSibling;
-			const downvoteCountText = parseInt(downvoteCount.textContent);
-
-			if (event.target.parentElement.classList.contains('on')) {
-				downvoteCount.textContent = downvoteCountText - 1;
-			} else {
-				downvoteCount.textContent = downvoteCountText + 1;
-			}
-		} else if (classList.contains('downvote-path')) {
-			const downvoteCount =
-				event.target.parentElement.parentElement.nextElementSibling;
-			const downvoteCountText = parseInt(downvoteCount.textContent);
-
-			if (event.target.parentElement.parentElement.classList.contains('on')) {
-				downvoteCount.textContent = downvoteCountText - 1;
-			} else {
-				downvoteCount.textContent = downvoteCountText + 1;
-			}
-=======
 	addGlobalEventListener('click', '.downvote-svg', (event) => {
 		const downvoteCount = event.target.parentElement.nextElementSibling;
 		const downvoteCountText = parseInt(downvoteCount.textContent);
@@ -187,23 +62,10 @@ const toggleDownvote = () => {
 			downvoteCount.textContent = downvoteCountText - 1;
 		} else {
 			downvoteCount.textContent = downvoteCountText + 1;
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
 		}
 	});
 };
 
-<<<<<<< HEAD
-const addAnswer = () => {
-	const answerForm = document.querySelector('.answer-form');
-	const answerInput = document.querySelector('.answer-input');
-	const answerList = document.querySelector('.answers');
-
-	answerForm.addEventListener('submit', (event) => {
-		event.preventDefault();
-		if (answerInput.value === '') return;
-
-		const answer = document.createElement('div');
-=======
 const addAnswer = async () => {
 	addGlobalEventListener('submit', '.answer-form', async (event) => {
 		event.preventDefault();
@@ -217,7 +79,6 @@ const addAnswer = async () => {
 		const answerList = event.target.previousElementSibling;
 		const answer = document.createElement('div');
 
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
 		answer.classList.add('answer');
 		const answerContent = document.createElement('p');
 		answerContent.classList.add('answer-content');
@@ -289,9 +150,6 @@ const addAnswer = async () => {
 
 		answer.appendChild(votes);
 
-<<<<<<< HEAD
-		answerList.appendChild(answer);
-=======
 		answerList.insertAdjacentElement('afterend', answer);
 
 		const res = await fetch(
@@ -310,13 +168,10 @@ const addAnswer = async () => {
 		const newAnswer = await res.json();
 		const lastAnswer = event.target.previousElementSibling;
 		lastAnswer.setAttribute('id', newAnswer.id);
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
 		answerInput.value = '';
 	});
 };
 
-<<<<<<< HEAD
-=======
 const findStudents = () => {
 	const searchInput = document.getElementById('search');
 	searchInput.addEventListener('keyup', (event) => {
@@ -524,13 +379,9 @@ const addQuestion = async () => {
 	});
 };
 
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
 toggleVoteBg();
 toggleUpvote();
 toggleDownvote();
 addAnswer();
-<<<<<<< HEAD
-=======
 findStudents();
 addQuestion();
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
