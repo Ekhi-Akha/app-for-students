@@ -49,7 +49,7 @@ if (isset($_SESSION["username"])) {
         <section>
           <h1 id="hero-title">A Gateway<br>Into<br><span style="color: #1095C1;">Community</span><br>Life</h1>
           <p>Join the community of students, faculty, and staff at the Higher Institute of Informatics.</p>
-          <a href="#" role="button">Learn More</a>
+          <a href="/app-for-students/tos" role="button">Learn More</a>
           <h3><span id="counter"></span>+ Students joined already</h3>
         </section>
         <section class="parent">
@@ -123,14 +123,14 @@ if (isset($_SESSION["username"])) {
           <section>
             <h2>Get in touch</h2>
             <p>Get in touch with us and we'll get back to you as soon as possible.</p>
-            <a href="#" role="button">Contact Us</a>
+            <a href="https://github.com/Ekhi-Akha" role="button">Contact Us</a>
           </section>
 
           <section>
             <h2>Legal</h2>
             <ul>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="/app-for-students/tos">Terms of Service</a></li>
+              <li><a href="/app-for-students/privacy-policy">Privacy Policy</a></li>
             </ul>
           </section>
         </div>
