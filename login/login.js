@@ -45,8 +45,8 @@ function checkPassword() {
 	const password = passwordInput.value.trim();
 	if (password === '') {
 		showError(passwordInput, 'Password is required.');
-	} else if (password.length < 6) {
-		showError(passwordInput, 'Password must be at least 6 characters.');
+	} else if (password.length < 8) {
+		showError(passwordInput, 'Password must be at least 8 characters.');
 	} else {
 		showSuccess(passwordInput);
 	}

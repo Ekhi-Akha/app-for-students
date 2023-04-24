@@ -15,7 +15,10 @@
 
 
 <?php
-session_start();
+// ignore if session is already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 if (isset($_SESSION["username"])) {
     header("Location: /app-for-students/home");
     exit();
@@ -57,7 +60,9 @@ if (isset($_SESSION["username"])) {
                 </hgroup>
                 <?php
                 if (isset($_POST["submit"])) {
-                    session_start();
+                    if (session_status() == PHP_SESSION_NONE) {
+                        session_start();
+                    }
 
                     $username = $_POST["username"];
                     $email = $_POST["email"];
@@ -93,6 +98,15 @@ if (isset($_SESSION["username"])) {
 
                     if ($rowCount > 0) {
                         array_push($errors, "Email already exists!");
+                    }
+
+                    // check if username already exists
+                    $sql = "SELECT * FROM student WHERE username = '$username'";
+                    $result = mysqli_query($conn, $sql);
+                    $rowCount = mysqli_num_rows($result);
+
+                    if ($rowCount > 0) {
+                        array_push($errors, "Username already exists!");
                     }
 
                     if (count($errors) > 0) {

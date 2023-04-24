@@ -12,8 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $validPassword = "";
     $servername = "localhost";
     $username = "root";
-    $password = "";
-    $conn = new mysqli($servername, $username, $password);
+    $dbPassword = "";
+    $conn = new mysqli($servername, $username, $dbPassword);
 
     $stmt = $conn->prepare("SELECT * FROM app_for_students.student WHERE email = ?");
     $stmt->bind_param("s", $email);
@@ -24,6 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       fwrite($myfile, "Email exists");
 
       $row = $result->fetch_assoc();
+      echo password_verify($password, $row['password']);
+      echo $row['password'];
+      echo "<br>";
+      echo $password;
       if (password_verify($password, $row['password'])) {
         fwrite($myfile, "Password is correct");
         $validEmail = $row['email'];
@@ -43,7 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 
-echo $_SESSION["email"];
-echo $_SESSION["username"];
+if (isset($error)) {
+  echo "<p class='error'>$error</p>";
+}
 
 ?>
