@@ -26,13 +26,8 @@ if ($conn->query($sql) === TRUE) {
 
 $sql = "CREATE TABLE IF NOT EXISTS app_for_students.student (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-<<<<<<< HEAD
-    username VARCHAR(30) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-=======
     username VARCHAR(30) NOT NULL UNIQUE,
     email VARCHAR(50) NOT NULL UNIQUE,
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
     password VARCHAR(255) NOT NULL,
     educational_level VARCHAR(30) NOT NULL,
     remember BOOLEAN NOT NULL,
@@ -66,18 +61,10 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE IF NOT EXISTS app_for_students.question (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     student_id INT(6) UNSIGNED NOT NULL,
-<<<<<<< HEAD
-    answer_id INT(6) UNSIGNED NULL,
-    question VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (student_id) REFERENCES student(id),
-    FOREIGN KEY (answer_id) REFERENCES answer(id)
-=======
     title VARCHAR(255) NOT NULL,
     question VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (student_id) REFERENCES student(id)
->>>>>>> 742f0fac3f8bf048481c65d6f1cabb0a019d097f
     )";
 
 if ($conn->query($sql) === TRUE) {

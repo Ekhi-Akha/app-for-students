@@ -5,10 +5,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
   <link rel="icon" type="image/svg+xml" href="/app-for-students/book.svg" />
   <title>Home</title>
 </head>
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+if (!isset($_SESSION['username'])) {
+  header("Location: /app-for-students/login");
+  exit();
+}
+?>
 
 <body>
   <nav class="container">
@@ -44,7 +53,6 @@
       <div class="name-img-container">
         <b>John Doe</b>
         <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="profile" class="rounded">
-        <!-- logout button -->
         <a href="/app-for-students/api/logout.php" role="button" class="contrast">Logout</a>
       </div>
     </div>

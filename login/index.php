@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A login page">
     <link rel="icon" type="image/svg+xml" href="/app-for-students/book.svg" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="custom.css">
 
 </head>

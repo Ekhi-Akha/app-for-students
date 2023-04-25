@@ -55,13 +55,11 @@ article div {
   }
 }
 
-/* Nav */
 summary[role="link"].secondary:is([aria-current], :hover, :active, :focus) {
   background-color: transparent;
   color: var(--secondary-hover);
 }
 
-/* Hero Image */
 article div:nth-of-type(2) {
   display: none;
   background-color: #374956;
@@ -76,7 +74,6 @@ article div:nth-of-type(2) {
   }
 }
 
-/* Footer */
 body>footer {
   padding: 1rem 0;
 }
