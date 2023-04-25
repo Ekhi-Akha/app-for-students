@@ -191,7 +191,12 @@ const findStudents = () => {
 				studentsList.innerHTML = '';
 				filteredStudents.forEach((student) => {
 					const studentLink = document.createElement('a');
-					studentLink.setAttribute('href', `student.php?id=${student.id}`);
+					studentLink.setAttribute(
+						'href',
+						`http://localhost/app-for-students/profile?id=${student.id}`
+					);
+					console.log(studentLink.getAttribute('href'));
+
 					studentLink.textContent = student.username;
 					studentsList.appendChild(studentLink);
 

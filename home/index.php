@@ -238,7 +238,7 @@ if (!isset($_SESSION['username'])) {
 
   </main>
 
-  <script type="module" src="index.js"></script>
+  <script type="module" src="./index.js"></script>
   <script src="../js/minimal-theme-switcher.js"></script>
 </body>
 
