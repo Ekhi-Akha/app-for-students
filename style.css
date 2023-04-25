@@ -1468,10 +1468,10 @@ article:hover {
 }
 
 
-.rounded {
+/* .rounded {
 	border-radius: 40%;
 	height: 51px;
-}
+} */
 
 .name-img-container {
 	display: flex;

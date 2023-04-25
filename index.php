@@ -87,9 +87,9 @@ if (isset($_SESSION["username"])) {
         <h2 style="margin: 0;">What our students are saying about us.</h2>
         <section class="grid">
           <article class="testimonial">
-            <img src="https://content.fakeface.rest/female_34_64d2075eb5fb568130aa2f4fe570bb9ec8701c01.jpg" alt="">
+            <img src="./public/portrait-man-laughing-min.jpg" alt="">
             <hgroup>
-              <h3>John Doe</h3>
+              <h3>Youssef Hamdi</h3>
               <h4>Student</h4>
             </hgroup>
             <p>“I really like the community of students, faculty, and staff at the Higher Institute of Informatics. I
@@ -97,9 +97,11 @@ if (isset($_SESSION["username"])) {
               made a lot of friends and I have learned a lot from them.”</p>
           </article>
           <article class="testimonial">
-            <img src="https://content.fakeface.rest/female_34_64d2075eb5fb568130aa2f4fe570bb9ec8701c01.jpg" alt="">
+            <img
+              src="./public/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair-min.jpg"
+              alt="">
             <hgroup>
-              <h3>Sally Doe</h3>
+              <h3>Maram Benarbi</h3>
               <h4>Student</h4>
             </hgroup>
             <p>”This is a great place to learn and grow. I have learned a lot from the community of students, faculty,
@@ -107,9 +109,9 @@ if (isset($_SESSION["username"])) {
               staff at the Higher Institute of Informatics.”</p>
           </article>
           <article class="testimonial">
-            <img src="https://content.fakeface.rest/male_39_b0cf360a95e602234da05f7d72fe650cb0d6acaa.jpg" alt="">
+            <img src="./public/portrait-white-man-isolated-min.jpg" alt="">
             <hgroup>
-              <h3>John Doe</h3>
+              <h3>Ahmed Sallemi</h3>
               <h4>Student</h4>
             </hgroup>
             <p> I never thought I would be able to learn so much from the community of students, faculty, and staff at

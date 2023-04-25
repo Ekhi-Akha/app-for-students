@@ -213,7 +213,8 @@ const addQuestion = async () => {
 
 	questionForm.addEventListener('submit', async (event) => {
 		event.preventDefault();
-		const questionInput = event.target.children[1];
+		const questionTitleInput = event.target.children[1];
+		const questionInput = event.target.children[2];
 		if (questionInput.value === '') return;
 		const res = await fetch(
 			'http://localhost/app-for-students/api/add_question.php',
@@ -221,6 +222,7 @@ const addQuestion = async () => {
 				method: 'POST',
 				body: JSON.stringify({
 					question: questionInput.value,
+					title: questionTitleInput.value,
 				}),
 				headers: {
 					'Content-Type': 'application/json',
@@ -381,6 +383,7 @@ const addQuestion = async () => {
 		main.insertBefore(question, main.children[1]);
 
 		questionInput.value = '';
+		questionTitleInput.value = '';
 	});
 };
 

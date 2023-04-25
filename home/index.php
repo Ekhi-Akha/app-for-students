@@ -51,7 +51,9 @@ if (!isset($_SESSION['username'])) {
         </ul>
       </div>
       <div class="name-img-container">
-        <b>John Doe</b>
+        <?php
+        echo "<b>" . $_SESSION['username'] . "</b>";
+        ?>
         <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="profile" class="rounded">
         <a href="/app-for-students/api/logout.php" role="button" class="contrast">Logout</a>
       </div>
@@ -60,7 +62,8 @@ if (!isset($_SESSION['username'])) {
   </header>
   <main class="container">
     <form class="question-form">
-      <label for="question">Question</label>
+      <h2>Add Question</h2>
+      <input type="text" id="question-title" name="question-title" placeholder="Title..." required>
       <input type="text" id="question" name="question" placeholder="Ask a question..." required>
       <small>Our community is here to help you.</small>
       <button type="submit">Ask</button>
