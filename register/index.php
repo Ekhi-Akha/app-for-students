@@ -125,7 +125,7 @@ if (isset($_SESSION["username"])) {
                 ?>
 
 
-                <form action="index.php" method="post" id="form">
+                <form method="post" id="form">
 
                     <div class="grid">
                         <input type="text" id="username" name="username" placeholder="Username" aria-label="username"
