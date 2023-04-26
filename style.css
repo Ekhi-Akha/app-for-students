@@ -1468,11 +1468,6 @@ article:hover {
 }
 
 
-/* .rounded {
-	border-radius: 40%;
-	height: 51px;
-} */
-
 .name-img-container {
 	display: flex;
 	align-items: center;
@@ -1539,4 +1534,9 @@ header.container {
 
 .hidden {
 	display: none;
+}
+
+.rounded {
+	border-radius: 50%;
+	height: 51px;
 }

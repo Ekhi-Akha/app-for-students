@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -7,8 +9,8 @@ $conn = new mysqli($servername, $username, $password);
 $body = file_get_contents('php://input');
 
 $data = json_decode($body, true);
-$stmt = $conn->prepare("INSERT INTO app_for_students.question (title, question, student_id) VALUES (?, ?, 1)");
-$stmt->bind_param("ss", $data['title'], $data['question']);
+$stmt = $conn->prepare("INSERT INTO app_for_students.question (title, question, student_id) VALUES (?, ?, ?)");
+$stmt->bind_param("ssi", $data['title'], $data['question'], $_SESSION['student_id']);
 $stmt->execute();
 
 $insertId = $stmt->insert_id;

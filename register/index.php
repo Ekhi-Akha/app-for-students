@@ -116,8 +116,11 @@ if (isset($_SESSION["username"])) {
                     } else {
                         $sql = "INSERT INTO student (username, email, password, educational_level) VALUES ('$username', '$email', '$passwordHash', '$educational_level')";
                         mysqli_query($conn, $sql);
+                        // get the id of the last inserted row
+                        $id = mysqli_insert_id($conn);
                         $_SESSION["email"] = $email;
                         $_SESSION["username"] = $username;
+                        $_SESSION["student_id"] = $id;
                         header("Location: /app-for-students/home");
                         exit();
                     }

@@ -3,7 +3,6 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST["email"];
   $password = $_POST["password"];
-  // open a file
   $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
 
 
@@ -20,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
-      // write to file
       fwrite($myfile, "Email exists");
 
       $row = $result->fetch_assoc();
@@ -34,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $validPassword = $row['password'];
         $_SESSION["email"] = $email;
         $_SESSION["username"] = $row['username'];
+        $_SESSION["student_id"] = $row['id'];
         header("Location: /app-for-students/home");
       } else {
         fwrite($myfile, "Password is incorrect");

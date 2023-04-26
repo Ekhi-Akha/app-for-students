@@ -221,6 +221,7 @@ const addQuestion = async () => {
 			{
 				method: 'POST',
 				body: JSON.stringify({
+					studentId: 1,
 					question: questionInput.value,
 					title: questionTitleInput.value,
 				}),
@@ -269,6 +270,34 @@ const addQuestion = async () => {
 		questionDetailsSmall.appendChild(questionDetailsEm);
 		questionDetails.appendChild(questionDetailsSmall);
 
+		const deleteQuestionButton = document.createElement('button');
+		deleteQuestionButton.classList.add('contrast');
+		deleteQuestionButton.classList.add('del-q');
+		deleteQuestionButton.textContent = 'Delete question';
+		deleteQuestionButton.style.width = 'auto';
+
+		// deleteQuestionButton.addEventListener('click', async () => {
+		// 	console.log('clicked');
+		// 	console.log(newQuestion.id);
+		// 	const res = await fetch(
+		// 		'http://localhost/app-for-students/api/delete_question.php',
+		// 		{
+		// 			method: 'POST',
+		// 			body: JSON.stringify({
+		// 				id: newQuestion.id,
+		// 			}),
+		// 			headers: {
+		// 				'Content-Type': 'application/json',
+		// 			},
+		// 		}
+		// 	);
+
+		// 	const deletedQuestion = await res.json();
+		// 	console.log(deletedQuestion);
+		// 	question.parentNode.removeChild(question);
+		// });
+
+		questionHeader.appendChild(deleteQuestionButton);
 		questionHeader.appendChild(subject);
 		questionHeader.appendChild(questionTitle);
 		questionHeader.appendChild(questionDetails);
@@ -356,7 +385,6 @@ const addQuestion = async () => {
 
 		const answerForm = document.createElement('form');
 		answerForm.classList.add('answer-form');
-		// answerForm.setAttribute('action', '/login');
 
 		const answerInput = document.createElement('input');
 		answerInput.classList.add('answer-input');
@@ -386,6 +414,26 @@ const addQuestion = async () => {
 		questionTitleInput.value = '';
 	});
 };
+
+addGlobalEventListener('click', '.del-q', async (event) => {
+	const question = event.target.closest('.question');
+	console.log(question);
+	const res = await fetch(
+		'http://localhost/app-for-students/api/delete_question.php',
+		{
+			method: 'POST',
+			body: JSON.stringify({
+				id: question.id,
+			}),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		}
+	);
+	const deletedQuestion = await res.json();
+	console.log(deletedQuestion);
+	question.parentNode.removeChild(question);
+});
 
 toggleVoteBg();
 toggleUpvote();

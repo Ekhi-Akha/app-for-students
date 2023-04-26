@@ -50,13 +50,30 @@ if (!isset($_SESSION['username'])) {
         <ul class="students-list">
         </ul>
       </div>
-      <div class="name-img-container">
-        <?php
-        echo "<b>" . $_SESSION['username'] . "</b>";
-        ?>
-        <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="profile" class="rounded">
-        <a href="/app-for-students/api/logout.php" role="button" class="contrast">Logout</a>
-      </div>
+      <?php
+      $servername = "localhost";
+      $username = "root";
+      $dbPassword = "";
+      $conn = new mysqli($servername, $username, $dbPassword);
+
+      if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+
+      $sql = "SELECT * FROM app_for_students.student WHERE `username` = '" . $_SESSION['username'] . "'";
+      $result = $conn->query($sql);
+      $row = $result->fetch_assoc();
+
+      // http://localhost/app-for-students/profile/?id=2
+      
+      echo "<div class='name-img-container'>";
+      echo "<a href='/app-for-students/profile/?id=" . $row['id'] . "' class='contrast'>";
+      echo "<b>" . $_SESSION['username'] . "</b>";
+      echo "</a>";
+      echo "<img src='https://randomuser.me/api/portraits/men/86.jpg' alt='profile' class='rounded'>";
+      echo "<a href='/app-for-students/api/logout.php' role='button' class='contrast'>Logout</a>";
+      echo "</div>";
+      ?>
     </div>
     </div>
   </header>
@@ -69,8 +86,10 @@ if (!isset($_SESSION['username'])) {
       <button type="submit">Ask</button>
     </form>
 
-    <article class="question">
+    <!-- <article class="question">
       <div class="question-header">
+        <button style="width: auto;" href="#" role="button" class="contrast">Delete question</button>
+
         <h2>Subject: <a href="#">Mathematics</a></h2>
         <h3>Question Title</h3>
         <p class="details"> <small><em>Asked by <b>John Doe</b> on 12/12/2021</em></small> </p>
@@ -146,9 +165,7 @@ if (!isset($_SESSION['username'])) {
         <input class="answer-input" type="text" placeholder="Answer the question">
         <button type="submit">Answer</button>
       </form>
-    </article>
-
-
+    </article> -->
 
     <?php
     $servername = "localhost";
@@ -171,8 +188,14 @@ if (!isset($_SESSION['username'])) {
       $sql = "SELECT * FROM app_for_students.answer WHERE question_id = " . $row['id'];
       $answers = mysqli_query($conn, $sql);
       echo "
- <article  class='question' id='" . $row['id'] . "'>
-      <div class='question-header'>
+      <article class='question' id='" . $row['id'] . "'>
+      <div class='question-header'>";
+
+      if ($student['email'] == $_SESSION['email']) {
+        echo "<button style='width: auto;' class='contrast del-q'>Delete question</button>";
+      }
+
+      echo "
         <h2>Subject: <a href='#'>Mathematics</a></h2>
         <h3>" . $row['title'] . "</h3>
         <p class='details'> <small><em>Asked by <b>" . $student['username'] . "</b> on " . substr($row['created_at'], 0, 10) . "</em></small> </p>
