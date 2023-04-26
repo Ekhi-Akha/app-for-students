@@ -64,8 +64,7 @@ if (!isset($_SESSION['username'])) {
       $result = $conn->query($sql);
       $row = $result->fetch_assoc();
 
-      // http://localhost/app-for-students/profile/?id=2
-      
+
       echo "<div class='name-img-container'>";
       echo "<a href='/app-for-students/profile/?id=" . $row['id'] . "' class='contrast'>";
       echo "<b>" . $_SESSION['username'] . "</b>";
@@ -85,87 +84,6 @@ if (!isset($_SESSION['username'])) {
       <small>Our community is here to help you.</small>
       <button type="submit">Ask</button>
     </form>
-
-    <!-- <article class="question">
-      <div class="question-header">
-        <button style="width: auto;" href="#" role="button" class="contrast">Delete question</button>
-
-        <h2>Subject: <a href="#">Mathematics</a></h2>
-        <h3>Question Title</h3>
-        <p class="details"> <small><em>Asked by <b>John Doe</b> on 12/12/2021</em></small> </p>
-      </div>
-      <div class="question-body">
-        <p class="question-content">Why is the sky blue?</p>
-      </div>
-      <div class="question-footer">
-        <div class="votes">
-          <span class="vote upvote">
-            <svg width="36" height="36" class="vote-svg upvote-svg">
-              <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path upvote-path">
-              </path>
-            </svg>
-          </span>
-
-          <p class="vote-count">0</p>
-
-          <span class="vote downvote">
-            <svg width="36" height="36" class="vote-svg downvote-svg">
-              <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path downvote-path">
-              </path>
-            </svg>
-          </span>
-
-          <p class="vote-count">0</p>
-
-        </div>
-      </div>
-
-      <div class="answers">
-        <h4>Answers</h4>
-        <div class="answer">
-          <p class="answer-content">Answer is because of the sun and the atmosphere</p>
-          <div class="votes">
-            <span class="vote upvote">
-              <svg width="36" height="36" class="vote-svg upvote-svg">
-                <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path upvote-path">
-                </path>
-              </svg>
-            </span>
-            <p class="vote-count">0</p>
-            <span class="vote downvote">
-              <svg width="36" height="36" class="vote-svg downvote-svg">
-                <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path downvote-path">
-                </path>
-              </svg>
-            </span>
-            <p class="vote-count">0</p>
-          </div>
-        </div>
-        <div class="answer">
-          <p class="answer-content">This answer is better than the previous one because it has more upvotes</p>
-          <div class="votes">
-            <span class="vote upvote">
-              <svg width="36" height="36" class="vote-svg upvote-svg">
-                <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path upvote-path">
-                </path>
-              </svg>
-            </span>
-            <p class="vote-count">0</p>
-            <span class="vote downvote">
-              <svg width="36" height="36" class="vote-svg downvote-svg">
-                <path d="M2 10h32L18 26 2 10z" fill="currentColor" class="vote-path downvote-path">
-                </path>
-              </svg>
-            </span>
-            <p class="vote-count">0</p>
-          </div>
-        </div>
-      </div>
-      <form class="answer-form">
-        <input class="answer-input" type="text" placeholder="Answer the question">
-        <button type="submit">Answer</button>
-      </form>
-    </article> -->
 
     <?php
     $servername = "localhost";
@@ -197,11 +115,22 @@ if (!isset($_SESSION['username'])) {
 
       echo "
         <h2>Subject: <a href='#'>Mathematics</a></h2>
-        <h3>" . $row['title'] . "</h3>
-        <p class='details'> <small><em>Asked by <b>" . $student['username'] . "</b> on " . substr($row['created_at'], 0, 10) . "</em></small> </p>
+        <h3 class='question-title'>" . $row['title'] . "</h3>";
+      if ($student['email'] == $_SESSION['email']) {
+        echo "
+        <button style='margin-top: 10px; background: none; width: auto;' class='secondary edit-q-title'>Edit Title</button>
+          ";
+      }
+      echo "<p class='details'> <small><em>Asked by <b>" . $student['username'] . "</b> on " . substr($row['created_at'], 0, 10) . "</em></small> </p>
       </div>
       <div class='question-body'>
-        <p class='question-content'>" . $row['question'] . "</p>
+        <p class='question-content'>" . $row['question'] . "</p>";
+      if ($student['email'] == $_SESSION['email']) {
+        echo "
+        <button style='margin-top: 10px; background: none; width: auto;' class='secondary edit-q'>Edit Content</button>
+          ";
+      }
+      echo "
       </div>
       <div class='question-footer'>
         <div class='votes'>

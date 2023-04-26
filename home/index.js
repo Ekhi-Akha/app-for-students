@@ -430,10 +430,100 @@ addGlobalEventListener('click', '.del-q', async (event) => {
 			},
 		}
 	);
-	const deletedQuestion = await res.json();
-	console.log(deletedQuestion);
+	const _ = await res.json();
 	question.parentNode.removeChild(question);
 });
+
+const editQuestion = () => {
+	addGlobalEventListener('click', '.edit-q', (event) => {
+		const question = event.target.closest('.question');
+		const questionContent = question.querySelector('.question-content');
+		const questionInput = document.createElement('input');
+		questionInput.classList.add('question-input');
+		questionInput.setAttribute('type', 'text');
+		questionInput.setAttribute('placeholder', 'Edit the question');
+		questionInput.value = questionContent.textContent;
+		questionContent.parentNode.replaceChild(questionInput, questionContent);
+		event.target.textContent = 'Save';
+		event.target.classList.remove('edit-q');
+		event.target.classList.add('save-q');
+
+		addGlobalEventListener('click', '.save-q', async (event) => {
+			const question = event.target.closest('.question');
+			const questionInput = question.querySelector('.question-input');
+			const questionContent = document.createElement('p');
+			questionContent.classList.add('question-content');
+			questionContent.textContent = questionInput.value;
+			questionInput.parentNode.replaceChild(questionContent, questionInput);
+			event.target.textContent = 'Edit';
+			event.target.classList.remove('save-q');
+			event.target.classList.add('edit-q');
+
+			const res = await fetch(
+				'http://localhost/app-for-students/api/edit_question.php',
+				{
+					method: 'POST',
+					body: JSON.stringify({
+						id: question.id,
+						question: questionContent.textContent,
+					}),
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}
+			);
+			const _ = await res.json();
+		});
+	});
+};
+
+const editQuestionTitle = () => {
+	addGlobalEventListener('click', '.edit-q-title', (event) => {
+		const question = event.target.closest('.question');
+		const questionTitle = question.querySelector('.question-title');
+		const questionTitleInput = document.createElement('input');
+		questionTitleInput.classList.add('question-title-input');
+		questionTitleInput.setAttribute('type', 'text');
+		questionTitleInput.setAttribute('placeholder', 'Edit the question title');
+		questionTitleInput.value = questionTitle.textContent;
+		questionTitle.parentNode.replaceChild(questionTitleInput, questionTitle);
+		event.target.textContent = 'Save';
+		event.target.classList.remove('edit-q-title');
+		event.target.classList.add('save-q-title');
+
+		addGlobalEventListener('click', '.save-q-title', async (event) => {
+			const question = event.target.closest('.question');
+			const questionTitleInput = question.querySelector(
+				'.question-title-input'
+			);
+			const questionTitle = document.createElement('h3');
+			questionTitle.classList.add('question-title');
+			questionTitle.textContent = questionTitleInput.value;
+			questionTitleInput.parentNode.replaceChild(
+				questionTitle,
+				questionTitleInput
+			);
+			event.target.textContent = 'Edit Title';
+			event.target.classList.remove('save-q-title');
+			event.target.classList.add('edit-q-title');
+
+			const res = await fetch(
+				'http://localhost/app-for-students/api/edit_question_title.php',
+				{
+					method: 'POST',
+					body: JSON.stringify({
+						id: question.id,
+						question_title: questionTitle.textContent,
+					}),
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}
+			);
+			const _ = await res.json();
+		});
+	});
+};
 
 toggleVoteBg();
 toggleUpvote();
@@ -441,3 +531,5 @@ toggleDownvote();
 addAnswer();
 findStudents();
 addQuestion();
+editQuestion();
+editQuestionTitle();
