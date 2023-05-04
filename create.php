@@ -81,7 +81,21 @@ if ($conn->query($sql) === TRUE) {
     echo "Error adding foreign key: " . $conn->error;
 }
 
+$sql = "CREATE TABLE IF NOT EXISTS app_for_students.vote (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    student_id INT(6) UNSIGNED NOT NULL,
+    answer_id INT(6) UNSIGNED NOT NULL,
+    vote_value INT(6) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_id) REFERENCES student(id),
+    FOREIGN KEY (answer_id) REFERENCES answer(id)
+    )";
 
+if ($conn->query($sql) === TRUE) {
+    echo "<h1>Table vote created successfully<br></h1>";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
 
 $conn->close();
 

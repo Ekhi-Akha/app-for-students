@@ -108,9 +108,8 @@
     </h3>
     <p>
       If you have any questions, concerns, or inquiries regarding this Privacy Policy or the privacy practices of the
-      Application, please contact the Service Provider at [contact email or address].
+      Application, please contact the Service Provider at faroukhamadi1@outlook.com.
     </p>
-    <!-- <script type="module" src="index.js"></script> -->
     <script src="../js/minimal-theme-switcher.js"></script>
   </main>
 </body>

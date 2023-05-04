@@ -106,9 +106,7 @@
       employees, and agents shall not be liable for any direct, indirect, incidental, special,
       consequential, or
       exemplary damages, including but not limited to, damages for loss of profits, goodwill, use, data, or
-      other
-      intangible losses, arising out of</p>
-    <!-- <script type="module" src="index.js"></script> -->
+      other intangible losses</p>
     <script src="../js/minimal-theme-switcher.js"></script>
   </main>
 </body>

@@ -54,10 +54,10 @@ if (isset($_SESSION["username"])) {
           <h3><span id="counter"></span>+ Students joined already</h3>
         </section>
         <section class="parent">
-          <div class="div1"><img src="public/Rectangle_6.png" alt=""></div>
-          <div class="div2"><img src="public/Rectangle_4.png" alt=""></div>
-          <div class="div3"><img src="public/Rectangle_5.png" alt=""></div>
-          <div class="div4"><img src="public/Rectangle_7.png" alt=""></div>
+          <div class="div1"><img src="public/Rectangle_6.png" alt="student with glasses"></div>
+          <div class="div2"><img src="public/Rectangle_4.png" alt="student concentrating"></div>
+          <div class="div3"><img src="public/Rectangle_5.png" alt="class"></div>
+          <div class="div4"><img src="public/Rectangle_7.png" alt="student holding book"></div>
         </section>
       </div>
       <div class="grid">
@@ -126,7 +126,7 @@ if (isset($_SESSION["username"])) {
           <section>
             <h2>Get in touch</h2>
             <p>Get in touch with us and we'll get back to you as soon as possible.</p>
-            <a href="https://github.com/Ekhi-Akha" role="button">Contact Us</a>
+            <a href="https://github.com/Ekhi-Akha" target="_blank" role="button">Contact Us</a>
           </section>
 
           <section>
